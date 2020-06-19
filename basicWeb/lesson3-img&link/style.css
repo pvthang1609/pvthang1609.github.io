@@ -1,0 +1,44 @@
+body {
+  background-color: #eeedf4;
+}
+.wapper {
+  width: 1280px;
+  min-height: 990px;
+  margin: 0 auto;
+  background-color: white;
+}
+.logo {
+    height: 90px;
+    width: 100%;
+    position: relative;
+}
+.logo img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.content {
+    height: 820px;
+    width: 100%;
+    display: flex;
+}
+.block {
+    height: 400px;
+    width: 250px;
+    background-color: #82ccdd;
+    margin-right: 5px;
+    position: relative;
+    border-radius: 5px;
+}
+.block img {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+.item1 {
+    margin-left: 5px;
+}
+
