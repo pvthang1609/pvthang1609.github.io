@@ -71,6 +71,9 @@ ul {
     transition: all 0.5s;
 }
 /*hover*/
+.header__menu-item:hover .header__menu-link {
+    color: #c4c4c4;
+}
 .menu-sub__link:hover {
     color: white;
     background-color: #c4c4c4;
