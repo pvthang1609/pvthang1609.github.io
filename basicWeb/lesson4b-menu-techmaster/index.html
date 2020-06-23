@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Techmaster</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pvthang1609.github.io/basicWeb/lesson4b-menu-techmaster/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header class="header">
@@ -22,8 +23,27 @@
                 <li class="header__menu-item">
                     <a href="https://techmaster.vn/khoa-hoc/phong-lab" class="header__menu-link">phòng lab</a>
                 </li>
-                <li class="header__menu-item">
-                    <a href="#" class="header__menu-link">lộ trình</a>
+                <li class="header__menu-item header__menu-sub header__menu-sub--route">
+                    <a href="#" class="header__menu-link">lộ trình
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="menu-sub__list">
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/lo-trinh" class="menu-sub__link">Thực tập 9 tháng</a>
+                        </li>
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/lo-trinh/foundation" class="menu-sub__link">Nền tảng lập trình</a>
+                        </li>
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/lo-trinh/front-end" class="menu-sub__link">Front End + React</a>
+                        </li>
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/lo-trinh/mobile" class="menu-sub__link">Di động React Native</a>
+                        </li>
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/lo-trinh/java-fullstack" class="menu-sub__link">Java Spring Boot Fullstack</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="header__menu-item">
                     <a href="https://techmaster.vn/san-pham-hoc-vien" class="header__menu-link">sản phẩm học viên</a>
@@ -40,8 +60,24 @@
                 <li class="header__menu-item">
                     <a href="https://techmaster.vn/viec-lam" class="header__menu-link">việc làm</a>
                 </li>
-                <li class="header__menu-item">
-                    <a href="#" class="header__menu-link">chúng tôi</a>
+                <li class="header__menu-item header__menu-sub header__menu-sub--we">
+                    <a href="#" class="header__menu-link">chúng tôi
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="menu-sub__list">
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/trungtam/trung-tam" class="menu-sub__link">Trung tâm</a>
+                        </li>
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/trungtam/quy-dinh-chung" class="menu-sub__link">Quy định chung</a>
+                        </li>
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/trungtam/giang-vien" class="menu-sub__link">Giảng viên</a>
+                        </li>
+                        <li class="menu-sub__item">
+                            <a href="https://techmaster.vn/trungtam/huong-dan-mua-khoa-hoc" class="menu-sub__link">Hướng dẫn đăng kí</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

@@ -9,6 +9,9 @@ a {
     color: white;
     font-weight: 400;
 }
+ul {
+    list-style-type: none;
+}
 .header {
     height: 60px;
     width: 100%;
@@ -17,12 +20,13 @@ a {
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
-}
-.header__logo {
-    margin-left: 15px;
+    -webkit-box-shadow: 0px 1px 20px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 20px -7px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 20px -7px rgba(0,0,0,0.75);
 }
 .header__logo img {
     width: 120px;
+    margin-left: 15px;
 }
 .header__menu-list{
     display: flex;
@@ -30,7 +34,6 @@ a {
     flex-wrap: nowrap;
     list-style-type: none;
 }
-
 .header__menu-item {
     text-transform: uppercase;
     font-size: 15.2px;      /*trên web là .95rem, font-size là 16px => font-size ở đây là 15.2px*/
@@ -38,6 +41,45 @@ a {
     height: 60px;
     line-height: 60px;
 }
+.header__menu-item:last-child {
+    margin-right: 150px;
+}
 .header__menu-link {
     display: block;
+}
+.menu-sub__list {
+    border-radius: 5px;
+    position: absolute;
+    -webkit-box-shadow: 0px 5px 20px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 20px -7px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 20px -7px rgba(0,0,0,0.75);
+    z-index: 1000;  
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+}
+.menu-sub__item {
+    width: 220px;
+    height: 45px;
+    line-height: 45px;
+    position: relative;
+}
+.menu-sub__link {
+    text-align: center;
+    color: black;
+    display: block;
+    transition: all 0.5s;
+}
+/*hover*/
+.menu-sub__link:hover {
+    color: white;
+    background-color: #c4c4c4;
+}
+.header__menu-sub--route:hover .menu-sub__list {
+    opacity: 1;
+    visibility: visible;
+}
+.header__menu-sub--we:hover .menu-sub__list {
+    opacity: 1;
+    visibility: visible;
 }
