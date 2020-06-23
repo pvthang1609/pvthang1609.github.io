@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+}
+.header {
+    height: 60px;
+    width: 100%;
+    background-color: #34465c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.header__logo {
+    margin-left: 15px;
+}
+.header__logo img {
+    width: 120px;
+}
+.header__menu-list{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    list-style-type: none;
+}
+
+.header__menu-item {
+    text-transform: uppercase;
+    font-size: 15.2px;      /*trên web là .95rem, font-size là 16px => font-size ở đây là 15.2px*/
+    margin: 0 10px;
+    height: 60px;
+    line-height: 60px;
+}
+.header__menu-link {
+    display: block;
+}
