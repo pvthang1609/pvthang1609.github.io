@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+</head>
+
+<body>
+    <canvas id="canvas">Browser not support canvas</canvas>
+    <script>
+        var canvas = document.querySelector('#canvas');
+        canvas.width = '800'
+        canvas.height = '800'
+        canvas.style.border = '1px solid black'
+        var ctx = canvas.getContext('2d')
+
+        for (x = 0; x < 8; x++) {                                     //vòng for chạy qua các ô ngang
+            for (y = 0; y < 8; y++) {                                  //vòng for chạy qua các ô dọc
+                if (x % 2 == y % 2) {                                  //so sánh số dư  khi chia cho 2 của hoành độ và tung độ
+                    ctx.fillStyle = 'black'                             //nếu true thì vẽ 1 màu, false thì vẽ màu còn lại
+                    ctx.fillRect(x * 100, y * 100, 100, 100)
+                } else {
+                    ctx.fillStyle = 'white'
+                    ctx.fillRect(x * 100, y * 100, 100, 100)
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

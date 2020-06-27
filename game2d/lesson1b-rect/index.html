@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle</title>
+</head>
+<body>
+    <canvas id="canvas">Browser not support canvas</canvas>
+    <script>
+        var canvas = document.querySelector('#canvas');
+        canvas.width = '1000'
+        canvas.height = '1000'
+        canvas.style.border = '1px solid black'
+        var ctx = canvas.getContext('2d')
+
+        class Rect {
+            constructor(dx, dy, w, h, c) {
+                this.dx = dx
+                this.dy = dy
+                this.width = w
+                this.height = h
+                this.color = c
+            }
+            draw () {
+                ctx.beginPath()
+                ctx.fillStyle = this.color
+                ctx.fillRect(this.dx, this.dy, this.width, this.height)
+            }
+        }
+
+        var rect0 = new Rect(80, 90, 100, 150, 'red')
+        rect0.draw()
+
+        var squa0 = new Rect(500, 10, 200, 200, 'blue')
+        squa0.draw()
+
+        var rect1 = new Rect(55, 500, 400, 350, 'yellow')
+        rect1.draw()
+
+    </script>
+</body>
+</html>

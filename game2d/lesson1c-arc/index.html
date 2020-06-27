@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile</title>
+</head>
+<body>
+    <canvas id="canvas">Browser not support canvas</canvas>
+    <script>
+        var canvas = document.querySelector('#canvas');
+        canvas.width = '1000'
+        canvas.height = '1000'
+        canvas.style.border = '1px solid black'
+        var ctx = canvas.getContext('2d')
+
+        class Arc {
+            constructor(dx, dy, radius, startPoint, endPoint, clockwise, color) {
+                this.dx = dx
+                this.dy = dy
+                this.r = radius
+                this.sp = startPoint * Math.PI
+                this.ep = endPoint * Math.PI
+                this.cw = clockwise
+                this.color = color
+            }
+            draw () {
+                ctx.beginPath()
+                ctx.strokeStyle = this.color
+                ctx.arc(this.dx, this.dy, this.r, this.sp, this.ep, this.cw)
+                ctx.stroke()
+            }
+        }
+
+        var face = new Arc(500, 500, 250, 0, 2, true, 'black')
+        face.draw()
+
+        var mouth = new Arc(500, 500, 170, 0, 1, false, 'black')
+        mouth.draw()
+
+        var eye0 = new Arc(400, 400, 30, 0, 2, true, 'black')
+        eye0.draw()
+
+        var eye1 = new Arc(600, 400, 30, 0, 2, true, 'black')
+        eye1.draw()
+
+    </script>
+</body>
+</html>
