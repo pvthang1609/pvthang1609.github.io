@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body {
+    background-color: #ccc;
+}
+.partOne,
+.partTwo,
+.partThree,
+.partFour {
+    background-color: white;
+    height: 500px;
+    margin: 10px 0;
+    color: white;
+    font-size: 35px;
+    font-weight: 400;
+}
+.partOne__block-red,
+.partTwo__block-red,
+.partThree__block-red,
+.partFour__block-red {
+    background-color: red;
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+}
+.partOne__block-green,
+.partTwo__block-green,
+.partThree__block-green,
+.partFour__block-green {
+    background-color: green;
+    line-height: 200px;
+    text-align: center;
+}
+.partOne__block-blue,
+.partTwo__block-blue,
+.partThree__block-blue,
+.partFour__block-blue {
+    background-color: blue;
+    line-height: 200px;
+    text-align: center;
+}
+
+/*-----------------part1-----------------*/
+.partOne__block-left {
+    margin: 50px 0;
+    width: 60%;
+    float: left;
+}
+.partOne__block-right {
+    margin: 50px 0;
+    height: 400px;
+    width: 40%;
+    float: left;
+}
+.partOne__block-green,
+.partOne__block-blue {
+    height: 200px;
+}
+/*-----------------part2-----------------*/
+.partTwo__block-left {
+    margin: 50px 0;
+    width: 60%;
+    float: left;
+}
+.partTwo__block-right {
+    margin: 50px 0;
+    padding-left: 15px;
+    height: 400px;
+    width: 40%;
+    float: left;
+}
+.partTwo__block-green,
+.partTwo__block-blue {
+    height: 200px;
+}
+/*-----------------part3-----------------*/
+.partThree__block-green,
+.partThree__block-blue {
+    height: 400px;
+    line-height: 400px;
+}
+.partThree__block {
+    margin: 50px 0px;
+    width: calc(100% / 3);
+    float: left;
+}
+/*-----------------part4-----------------*/
+.partFour__block-green,
+.partFour__block-blue {
+    height: 400px;
+    line-height: 400px;
+}
+.partFour__space {
+    margin: 50px 0px;
+    width: calc(100% / 3);
+    float: left;
+    padding: 0 7.5px;
+}
+.partFour__space:first-child {
+    padding-left: 0;
+}
+.partFour__space:last-child {
+    padding-right: 0;
+}
