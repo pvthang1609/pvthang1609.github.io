@@ -3,11 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Position</title>
 </head>
 <body>
-    <div class="container">
-        <header class="header"></header>
+    <div class="wapper">
+        <div class="menu">
+            <a href="index.html" class="menu__logo"><img src="img/logo.png" alt="none" class="menu__logo-img"></a>
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <a href="#" class="menu__link">about us</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link">menu</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link">gallary</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link">booking</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link">contact</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link">blog</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <header class="header">
+                <div class="header__icon">
+                    <i class="fa fa-bars" aria-hidden="true" style="font-size: 30px; border: 1px solid; border-radius: 5px;"></i>
+                </div>
+                <div class="header__logo">
+                    <a href="index.html"><img id="top" src="img/logo.png" alt="none" class="header__logo-img"></a>
+                </div>
+                <div class="searchBar">
+                    <input type="text" placeholder="Search..." class="searchBar-search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+            </header>
+            <img src="/basicWeb/lesson6b-position/img/banner.png" alt="none" class="content__banner">
+            <div class="content__right">
+                <div>
+                    <h1 class="content__heading">Start your meal with our exclusive menu</h1>
+                    <a href="#" class="content__link">learn more</a>
+                </div>
+                <img src="img/logo.png" alt="">
+                <p class="content__text">book your table <span>now</span></p>
+            </div>
+        </div>
+        <div class="onTop">
+            <a href="#top"><i class="fa fa-arrow-circle-up" aria-hidden="true" style="font-size: 50px;"></i></a>
+        </div>
     </div>
     
 </body>
