@@ -61,6 +61,8 @@ a{
     left: 3rem;
     transform: rotate(2deg);
     border: 1rem solid white;
+    animation: rotate1 10s infinite;
+    -webkit-animation: rotate1 10s infinite;
     
 }
 .banner__img-img2{
@@ -68,13 +70,17 @@ a{
     top: 4rem;
     left: 35rem;
     transform: rotate(-7deg);
-    border: 1rem solid white;
+    animation: rotate1 15s infinite;
+    -webkit-animation: rotate1 15s infinite;
     
 }
 .banner__img-img3{
     top: 8rem;
     left: 70rem;
     transform: rotate(5deg);
+    animation: left 15s infinite;
+   animation: rotate1 12s infinite;
+   -webkit-animation: rotate1 12s infinite;
    
 }
 .banner__img-img4{
@@ -149,4 +155,13 @@ a{
 }
 .fa:hover {
     color: #c69654;
+}
+/* ================= */
+@keyframes rotate1 {
+      0%, 100% {
+        transform: rotate(-2deg);
+    }
+      50% {
+        transform: rotate(2deg);
+    }
 }
