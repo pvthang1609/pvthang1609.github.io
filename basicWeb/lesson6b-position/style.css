@@ -49,12 +49,11 @@ a {
     content: "";
     width: 10px;
     height: 100%;
-    background-color: #ffc901);
+    background-color: #ffc901;
     position: absolute;
     top: 0;
     left: 0px;
     opacity: 0;
-    transition: all 0.5;
 }
 .menu__link:hover:before {
     opacity: 1;
