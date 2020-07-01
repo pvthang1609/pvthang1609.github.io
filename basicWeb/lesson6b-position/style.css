@@ -18,7 +18,7 @@ a {
     width: 300px;
     z-index: 1;
     position: absolute;
-    height: 1000px;
+    height: 550px;
 }
 .content {
     width: 100%;
@@ -131,4 +131,38 @@ a {
 }
 .fa-arrow-circle-up {
     color: #ffc901;
+}
+.wapper1 {
+    padding-top: 50px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: url(https://pvthang1609.github.io/basicWeb/lesson6b-position/img/background1.jpg);
+    align-items: center;
+}
+.img-row1 {
+    border-radius: 5px;
+    width: 710px;
+    margin-bottom: 5px;
+}
+.img-row2 {
+    border-radius: 5px;
+    width: 470px;
+}
+.footer {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+.footer > a {
+    font-weight: 600;
+    color: black;
+    border: 1px solid black;
+    padding: 15px 20px;
+    border-radius: 5px;
 }
