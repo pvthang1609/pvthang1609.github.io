@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #343b57;
+}
+a {
+    text-decoration: none;
+}
+.wapper {
+    max-width: 1360px;
+    margin: 0 auto;
+}
+.header {
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-text,
+.logo-text-spec {
+    font-family: 'Pacifico';
+    font-size: 55px;
+    
+}
+.logo-text-spec {
+    color: #fa8267;
+}
+.logo-text {
+    margin-left: 25px;
+}
+.search-input {
+    border: none;
+    padding: 10px 10px;
+    background-color: #343b57;
+    border-radius: 20px;
+    color: #fff;
+    transition: all 0.7s;
+}
+.search-input::placeholder {
+    color: white;
+  }
+.search-button {
+    display: inline-block;
+    padding: 13px 11px 13px 11px;
+    background-color: #343b57;
+    border-radius: 20px;
+}
+.menu-banner {
+    display: flex;
+    height: 700px;
+    border-radius: 5px;
+}
+.menu {
+    height: 700px;
+    width: 200px;
+    background-color: #ebebeb;
+    border-radius: 5px;
+}
+.banner {
+    margin-left: 10px;
+    height: 700px;
+    border-radius: 5px;
+    width: calc(100% - 200px);
+    background-image: url(./img/banner.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: banner 60s  infinite ;
+    animation-delay: 5s;
+}
+.menu__list {
+    margin-top: 10px;
+}
+.menu__list1 {
+    margin-top: 270px;
+    margin-left: 5px;
+}
+.menu__item {
+    padding: 20px 0px;
+    text-align: center;
+}
+.menu__item1 {
+    padding: 5px 0px;
+    text-align: left;
+    margin-left: 10px;
+}
+.menu__link {
+    transition: all 0.7s;
+}
+.menu__link:hover {
+    color: #fa8267;
+}
+.banner__text {
+    max-width: 550px;
+    margin: 140px 0 0 70px;
+    font-size: 50px;
+    line-height: 1.2;
+}
+.text-paragraph,
+.heading-spec {
+    color: #fa8267;
+}
+.text.heading {
+    margin-bottom: 50px;
+}
+.text-link {
+    font-size: 25px;
+    padding: 10px 20px;
+    background-color: #fa8267;
+    color: #fff;
+    border-radius: 25px;
+    transition: all 0.7s;
+}
+.text-link:hover {
+    background-color: #343b57;
+}
+.fa {
+    margin-right: 5px;
+}
+@keyframes banner {
+    0%   {background-image: url(./img/banner.jpg);}
+    33%  {background-image: url(./img/banner1.jpg);}
+    66%  {background-image: url(./img/banner2.jpg);}
+    100% {background-image: url(./img/banner.jpg);}
+  }
