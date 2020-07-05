@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+    overflow: hidden;
+}
+.part-one {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #2980b9;
+}
+.heart__body {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-color: #c0392b;
+    height: 200px;
+    width: 200px;
+    animation: example 5s infinite alternate;
+}
+.heart__body:before {
+    content: '';
+    position: absolute;
+    left: 0%;
+    top: -50%;
+    background-color: #c0392b;
+    width: 200px;
+    height: 101px;
+    border-top-right-radius: 100px;
+    border-top-left-radius: 100px;
+    animation: example1 5s infinite alternate;
+}
+.heart__body:after {
+    content: '';
+    position: absolute;
+    left: -50%;
+    top: 0%;
+    background-color: #c0392b;
+    width: 101px;
+    height: 200px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    animation: example1 5s infinite alternate;
+}
+@keyframes example {
+    0%   {transform: translate(-50%, -50%) rotate(45deg) scale(1);}
+    30%  {transform: translate(-50%, -50%) rotate(45deg) scale(0.9);}
+    70%  {transform: translate(-50%, -50%) rotate(45deg) scale(0.8);}
+    100% {transform: translate(-50%, -50%) rotate(45deg) scale(1);}
+}
+.part-two {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #2980b9;
+}
+.wapper {
+    height: 640px;
+    width: 640px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.block__img {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    background-color: white;
+    border: 5px solid white;
+    transition: all 0.3s;
+    z-index: 1;
+}
+.block__img:hover {
+    transform: scale(1.3);
+    z-index: 1000;
+}
+.img {
+    border-radius: 5px;
+}
