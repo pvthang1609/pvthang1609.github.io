@@ -153,4 +153,50 @@ a {
     33%  {background-image: url(./img/banner1.jpg);}
     66%  {background-image: url(./img/banner2.jpg);}
     100% {background-image: url(./img/banner.jpg);}
-  }
+}
+
+.ability {
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.ability__block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 330px;
+    width: 220px;
+    padding: 0 25px;
+    box-shadow: 0 0 50px 0px rgba(59, 59, 59, 0.274);
+    border-radius: 5px;
+}
+.ability__block .fa {
+    height: 55px;
+    width: 55px;
+    margin-bottom: 40px;
+}
+.fa-pencil:before,
+.fa-briefcase:before,
+.fa-pencil-square-o:before,
+.fa-laptop:before {
+    font-size: 55px;
+    color: #fa8267;
+}
+.ability-heading {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+.project__imgIntro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 580px;
+}
+.project__imgIntro-img {
+    height: 650px;
+}
+.project__imgIntro-textIntro {
+    height: 680px;
+}
