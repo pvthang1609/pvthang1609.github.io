@@ -31,22 +31,50 @@ a {
 .logo-text {
     margin-left: 25px;
 }
-.search-input {
-    border: none;
-    padding: 10px 10px;
-    background-color: #343b57;
-    border-radius: 20px;
+.search-input::placeholder {
     color: #fff;
+}
+.header__search {
+    border-radius: 30px;
+    height: 30px;
+    background-color: #343b57;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.search-button {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    transition: all 0.2s;
+}
+.header__search:hover .search-input {
+    width: 200px;
+}
+.header__search:hover .search-button {
+    background-color: #fa8267;
+    border-radius: 50%;
+}
+.header__search:hover .fa-search:before {
+    color: #fff;
+}
+.search-input {
+    color: #fff;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    width: 0px;
     transition: all 0.7s;
 }
-.search-input::placeholder {
-    color: white;
-  }
-.search-button {
-    display: inline-block;
-    padding: 13px 11px 13px 11px;
-    background-color: #343b57;
-    border-radius: 20px;
+.fa-search:before {
+    color: #fa8267;
+    float: right;
+    transition: all 0.7s;
 }
 .menu-banner {
     display: flex;
