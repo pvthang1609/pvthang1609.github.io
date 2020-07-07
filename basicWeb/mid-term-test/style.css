@@ -24,7 +24,7 @@ img {
     justify-content: space-between;
     align-items: center;
 }
-.header__logo-link {
+.header__logo-link > h1{
     font-size: 45px;
     font-family: 'Pacifico';
 }
