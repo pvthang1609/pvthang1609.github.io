@@ -41,7 +41,7 @@ img {
     margin-right: 30px;
 }
 .menu__link {
-    transition: all 0.7s;
+    transition: all 0.4s;
 }
 .content {
     height: 790px;
@@ -59,7 +59,7 @@ img {
     width: 440px;
     height: 380px;
     border-radius: 10px;
-    transition: all 0.7s;
+    transition: all 0.4s;
     z-index: 1;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -86,7 +86,7 @@ img {
 .block-name--link {
     color: #fff;
     font-size: 20px;
-    transition: all 0.7s;
+    transition: all 0.4s;
 }
 .block-name--link:hover {
     color: #343b57;
