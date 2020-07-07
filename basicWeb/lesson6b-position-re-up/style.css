@@ -137,13 +137,13 @@ a {
 .text-link {
     font-size: 25px;
     padding: 10px 20px;
-    background-color: #fa8267;
+    background-color: #343b57;
     color: #fff;
     border-radius: 25px;
     transition: all 0.7s;
 }
 .text-link:hover {
-    background-color: #343b57;
+    background-color: #fa8267;
 }
 .fa {
     margin-right: 5px;
