@@ -31,3 +31,13 @@ img {
 .pharagraph {
     margin: 10px 0;
 }
+.footer {
+    padding: 20px;
+    text-align: center;
+}   
+.goHome {
+    border: 1px solid;
+    border-radius: 50px;
+    padding: 15px 20px;
+    text-decoration: none;
+}
