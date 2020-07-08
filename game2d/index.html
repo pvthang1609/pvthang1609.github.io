@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move the ball</title>
+</head>
+<body>
+    <canvas id="canvas">Not support</canvas>
+    <script>
+        let canvas = document.querySelector('#canvas');
+        canvas.width = innerWidth - 20;
+        canvas.height = innerHeight - 20;
+        let canvasWidth = canvas.width;
+        let canvasHeight = canvas.height;
+        let ctx = canvas.getContext('2d')
+
+        //Class ball
+
+        class Ball {
+            constructor(x, y, radius, color) {
+                this.x = x;
+                this.y = y;
+                this.r = radius;
+                this.c = color;
+            }
+            draw () {
+                ctx.beginPath();
+                ctx.fillStyle = this.c;
+                ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+                ctx.fill();
+            }
+            move () {
+                this.x = this.x + 20;
+            }
+        }
+
+        let ball = new Ball(100, 100, 50, 'red')
+        ball.draw();
+
+        addEventListener("keypress", function() {
+            console.log(event.keyCode)
+            if(event.keyCode == 113) {
+                console.log(event.keyCode)
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight)
+                ball.move ();
+                ball.draw ();
+            }
+        })
+    </script>
+</body>
+</html>
