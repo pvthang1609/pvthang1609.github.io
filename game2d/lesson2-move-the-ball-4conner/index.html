@@ -76,7 +76,7 @@
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
             ball.move()
-            console.log(ball.x, ball.y, ball.dx, ball.dy, ball.v)
+            // console.log(ball.x, ball.y, ball.dx, ball.dy, ball.v)
         }
         animate();
 
@@ -104,21 +104,18 @@
             ball.dx = 0
             ball.dy = 0
         }
-
+        let i = 1;
         addEventListener('keypress', function() {
-            console.log(event.keyCode);
             if (event.keyCode == 32) {
-                start();
-            }
-            if (event.keyCode == 115) {
-                stop();
+                i++;
+                if (i % 2 == 0) {
+                    start();
+                }
+                if (i % 2 != 0) {
+                    stop();
+                }
             }
         })
-            
-    
-        
-        
-        
     </script>
 </body>
 </html>
