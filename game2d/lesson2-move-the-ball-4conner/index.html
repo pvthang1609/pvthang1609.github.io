@@ -69,23 +69,49 @@
             }
         }
         
-        let ball = new Ball(50, 50,0, 0, 50, 'red', 0)
+        let ball = new Ball(500, 50,0 , 0, 50, 'red', 0)
         ball.draw()
 
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
             ball.move()
+            console.log(ball.x, ball.y, ball.dx, ball.dy, ball.v)
         }
         animate();
+
+        function start() {
+            
+            if (ball.y == ball.r && 50 < ball.x < canvasWidth - ball.r) {
+                ball.v = 5
+                ball.dx = 5
+            }
+            if (ball.x + ball.r == canvasWidth && 50 < ball.y < canvasHeight - ball.r ) {
+                ball.v = 5
+                ball.dy = 5
+            }
+            if (ball.y + ball.r == canvasHeight && 50 < ball.x < canvasWidth - ball.r ) {
+                ball.v = 5
+                ball.dx = -5
+            }
+            if (ball.x == ball.r && 50 < ball.y < canvasHeight - ball.r ) {
+                ball.v = 5
+                ball.dy = -5
+            }
+            
+        }
+        function stop() {
+            ball.dx = 0
+            ball.dy = 0
+        }
 
         addEventListener('keypress', function() {
             console.log(event.keyCode);
             if (event.keyCode == 32) {
-                ball.v = 10;
+                start();
             }
             if (event.keyCode == 115) {
-                ball.v = 0;
+                stop();
             }
         })
             
