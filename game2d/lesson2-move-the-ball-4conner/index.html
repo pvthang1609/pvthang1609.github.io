@@ -53,6 +53,7 @@
             move () {
                 this.x = this.x + this.dx;
                 this.y = this.y + this.dy;
+                this.draw();
                 if (this.x + this.r >= canvasWidth && this.y - this.r == 0) {
                     ball.down()
                 }
@@ -62,13 +63,12 @@
                 if (this.x - this.r <= 0 && this.y + this.r == canvasHeight) {
                     ball.up()
                 }
-                if (this.y - this.r <= 0 && this.x -this.r == 0) {
+                if (this.y - this.r <= 0 && this.x - this.r == 0) {
                     ball.right()
-                }
-                this.draw();
+                }   
             }
         }
-
+        
         let ball = new Ball(50, 50,0, 0, 50, 'red', 0)
         ball.draw()
 
@@ -82,10 +82,10 @@
         addEventListener('keypress', function() {
             console.log(event.keyCode);
             if (event.keyCode == 32) {
-                ball.v = 10
+                ball.v = 10;
             }
             if (event.keyCode == 115) {
-                ball.v = 0
+                ball.v = 0;
             }
         })
             
