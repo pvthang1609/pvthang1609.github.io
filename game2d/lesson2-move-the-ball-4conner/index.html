@@ -75,27 +75,15 @@
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-<<<<<<< HEAD
             console.log('test')
             ball.move(5, 0);
-=======
-            ball.move()
->>>>>>> c1c13f44a6cdae1d1b43f7235333f934469f8c75
         }
         animate();
 
         addEventListener('key   press', function() {
             console.log(event.keyCode);
-<<<<<<< HEAD
             if (event.keyCode == 113) {
                 animate();
-=======
-            if (event.keyCode == 32) {
-                ball.v = 10
-            }
-            if (event.keyCode == 115) {
-                ball.v = 0
->>>>>>> c1c13f44a6cdae1d1b43f7235333f934469f8c75
             }
         })
             
