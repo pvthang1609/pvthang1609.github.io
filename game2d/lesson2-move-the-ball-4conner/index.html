@@ -45,13 +45,13 @@
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            console.log('test')
             ball.move(5, 0);
         }
 
-        addEventListener('keypress', function() {
+        addEventListener('key   press', function() {
             console.log(event.keyCode);
             if (event.keyCode == 113) {
-                console.log(event.keyCode);
                 animate();
             }
         })
