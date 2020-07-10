@@ -9,8 +9,9 @@
     <canvas id="canvas">Not support</canvas>
     <script>
         let canvas = document.querySelector('#canvas');
-        canvas.width = innerWidth - 20;
-        canvas.height = innerHeight - 20;
+        canvas.width = 1000;
+        canvas.height = 1000;
+        canvas.style.border = '10px solid red'
         let canvasWidth = canvas.width;
         let canvasHeight = canvas.height;
         let ctx = canvas.getContext('2d')
@@ -18,13 +19,14 @@
         //Class ball
 
         class Ball {
-            constructor(x, y, dx, dy, radius, color) {
+            constructor(x, y, dx, dy, radius, color, speed) {
                 this.x = x;
                 this.y = y;
                 this.dx = dx;
                 this.dy = dy
                 this.r = radius;
                 this.c = color;
+                this.v = speed;
             }
             draw () {
                 ctx.beginPath();
@@ -32,27 +34,68 @@
                 ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
                 ctx.fill();
             }
-            move (dx, dy ) {
-                this.x = this.x + dx;
-                this.y = this.y + dy;
+            right() {
+                this.dy = 0
+                this.dx = this.v
+            }
+            left() {
+                this.dy = 0
+                this.dx = - this.v
+            }
+            up() {
+                this.dx = 0
+                this.dy = - this.v
+            }
+            down() {
+                this.dx = 0
+                this.dy = this.v
+            }
+            move () {
+                this.x = this.x + this.dx;
+                this.y = this.y + this.dy;
+                if (this.x + this.r >= canvasWidth && this.y - this.r == 0) {
+                    ball.down()
+                }
+                if (this.y + this.r >= canvasHeight && this.x + this.r == canvasWidth) {
+                    ball.left()
+                }
+                if (this.x - this.r <= 0 && this.y + this.r == canvasHeight) {
+                    ball.up()
+                }
+                if (this.y - this.r <= 0 && this.x -this.r == 0) {
+                    ball.right()
+                }
                 this.draw();
             }
         }
 
-        let ball = new Ball(100, 100,0, 0, 50, 'red')
+        let ball = new Ball(50, 50,0, 0, 50, 'red', 0)
         ball.draw()
 
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+<<<<<<< HEAD
             console.log('test')
             ball.move(5, 0);
+=======
+            ball.move()
+>>>>>>> c1c13f44a6cdae1d1b43f7235333f934469f8c75
         }
+        animate();
 
         addEventListener('key   press', function() {
             console.log(event.keyCode);
+<<<<<<< HEAD
             if (event.keyCode == 113) {
                 animate();
+=======
+            if (event.keyCode == 32) {
+                ball.v = 10
+            }
+            if (event.keyCode == 115) {
+                ball.v = 0
+>>>>>>> c1c13f44a6cdae1d1b43f7235333f934469f8c75
             }
         })
             
