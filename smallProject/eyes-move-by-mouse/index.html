@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eyes</title>
+</head>
+<body>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        img {
+            max-height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 600px;
+            height: 600px;
+        }
+        .border__eyes {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            border: 5px solid;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+    </style>
+    <div class= "container">
+        <img src="img/cat.jpg" alt="">
+        <div class="border__eyes eyes-left">
+            <div class="iris"></div>
+        </div>
+        <div class="border__eyes eyes-right">
+            <div class="iris"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
