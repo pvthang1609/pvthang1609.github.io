@@ -53,6 +53,7 @@
             move () {
                 this.x = this.x + this.dx;
                 this.y = this.y + this.dy;
+                this.draw();
                 if (this.x + this.r >= canvasWidth && this.y - this.r == 0) {
                     ball.down()
                 }
@@ -62,37 +63,59 @@
                 if (this.x - this.r <= 0 && this.y + this.r == canvasHeight) {
                     ball.up()
                 }
-                if (this.y - this.r <= 0 && this.x -this.r == 0) {
+                if (this.y - this.r <= 0 && this.x - this.r == 0) {
                     ball.right()
-                }
-                this.draw();
+                }   
             }
         }
-
-        let ball = new Ball(50, 50,0, 0, 50, 'red', 0)
+        
+        let ball = new Ball(500, 50,0 , 0, 50, 'red', 0)
         ball.draw()
 
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
             ball.move()
+            // console.log(ball.x, ball.y, ball.dx, ball.dy, ball.v)
         }
         animate();
 
-        addEventListener('keypress', function() {
-            console.log(event.keyCode);
-            if (event.keyCode == 32) {
-                ball.v = 10
+        function start() {
+            
+            if (ball.y == ball.r && 50 < ball.x < canvasWidth - ball.r) {
+                ball.v = 5
+                ball.dx = 5
             }
-            if (event.keyCode == 115) {
-                ball.v = 0
+            if (ball.x + ball.r == canvasWidth && 50 < ball.y < canvasHeight - ball.r ) {
+                ball.v = 5
+                ball.dy = 5
+            }
+            if (ball.y + ball.r == canvasHeight && 50 < ball.x < canvasWidth - ball.r ) {
+                ball.v = 5
+                ball.dx = -5
+            }
+            if (ball.x == ball.r && 50 < ball.y < canvasHeight - ball.r ) {
+                ball.v = 5
+                ball.dy = -5
+            }
+            
+        }
+        function stop() {
+            ball.dx = 0
+            ball.dy = 0
+        }
+        let i = 1;
+        addEventListener('keypress', function() {
+            if (event.keyCode == 32) {
+                i++;
+                if (i % 2 == 0) {
+                    start();
+                }
+                if (i % 2 != 0) {
+                    stop();
+                }
             }
         })
-            
-    
-        
-        
-        
     </script>
 </body>
 </html>
