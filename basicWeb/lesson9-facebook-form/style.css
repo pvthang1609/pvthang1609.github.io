@@ -189,3 +189,40 @@ img {
 .terms__pharagraph-link:hover {
     text-decoration: underline;
 }
+.language {
+    margin-top: 22px;
+    margin-bottom: 5px;
+}
+.linkList {
+    margin-top: 5px;
+}
+.language__item,
+.linkList__item {
+    display: inline-block;
+    margin-right: 12px;
+}
+.language__link,
+.linkList__link {
+    color: #385898;
+    font-size: 12px;
+    line-height: 2;
+}
+.language__link:hover,
+.linkList__link:hover {
+    text-decoration: underline;
+}
+.linkList {
+    width: 938px;
+}
+.active {
+    color: #666;
+    cursor: context-menu;
+}
+.active:hover {
+    text-decoration: none;
+}
+.footer__pharagraph {
+    font-size: 11px;
+    color: #737373;
+    margin-top: 15px;
+}
