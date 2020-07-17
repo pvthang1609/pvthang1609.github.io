@@ -80,16 +80,17 @@ a {
     max-width: 600px;
 }
 .introduce__text-block,
-.skill__text-block {
+.skill__text-block,
+.info__blockHeading {
     width: 300px;
     height: 50px;
     background-color: #363636;
     margin-bottom: 20px;
     border-radius: 10px;
-    transform: ;
 }
 .introduce__text-heading2,
-.skill__text-heading2  {
+.skill__text-heading2,
+.info__heading  {
     font-size: 25px;
     text-transform: uppercase;
     color: #fff;
@@ -104,4 +105,118 @@ a {
     overflow: hidden;
     width: 424px;
     height: 280px;
+}
+.skill {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ebebeb;
+    min-height: 250px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+.skill__textBlock {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 20px;
+    box-shadow: 0 0 5px rgba(126, 126, 126, 0.719);
+}
+.skill__headingBlock {
+    align-self: flex-start;
+}
+.skill__textBlock-pharagraph {
+    position: absolute;
+    top: 90px;
+    left: 50px;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+}
+.skill__block {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px;
+}
+.percent {
+    width: 200px;
+    height: 15px;
+    background-color: #363636;
+    box-shadow: 0 0 5px rgba(126, 126, 126, 0.719);
+    border-radius: 25px;
+    overflow: hidden;
+}
+.percent__active {
+    height: 100%;
+    background-color: #b83b5e;
+}
+.percent__active-html5 {
+    width: 90%;
+}
+.percent__active-js {
+    width: 70%;
+}
+.percent__active-angular {
+    width: 80%;
+}
+.percent__active-nodejs {
+    width: 50%;
+}
+.percent__active-pts {
+    width: 60%;
+}
+.percent__active-react {
+    width: 80%;
+}
+.info {
+    margin: 25px 0;
+}
+.info__block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap ;
+}
+.info__birthday,
+.info_phoneNumber,
+.info__adress,
+.info__university {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: #ebebeb ;
+    margin: 10px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+}
+.info__birthday,
+.info_phoneNumber {
+    width: 45%;
+}
+
+.fa-birthday-cake:before,
+.fa-phone:before,
+.fa-map-marker:before,
+.fa-university:before {
+    font-size: 25px;
+    color: #fff;
+}
+#fa {
+    margin: 0 5px;
+    height: 50px;
+    width: 50px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #b83b5e;
+    border-radius: 50%;
+}
+.info__pharagraph {
+    color: #363636;
+    font-size: 20px;
 }
