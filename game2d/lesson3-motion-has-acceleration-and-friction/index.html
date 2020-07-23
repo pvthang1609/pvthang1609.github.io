@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson3</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+<script>
+    let canvas = document.getElementById('canvas')
+    canvas.height = innerHeight
+    canvas.width = innerWidth
+    canvas.style.border = '1px solid black'
+    
+    let ctx = canvas.getContext('2d')
+    class Ball {
+        constructor(x, y, r, color) {
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            this.color = color;
+            this.v = 0;             // vận tốc
+            this.a = 0;              //gia tốc
+            this.hsms = 0.98;      // hệ số ma sát của bê tông (hệ số đại diện, bền mặt khác nhau hệ số sẽ khác nhau)
+            this.t = 0;          // thời gian tác động
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.fillStyle = this.color;
+            ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+            ctx.fill();
+            ctx.closePath();
+        }
+        impact() {
+            ball.a = 10 * time;
+            ball.t = 5;
+        }
+        move() {
+            if (this.a != 0 && ball.t-- > 0) {
+                console.log(ball.a)
+                this.v += this.a
+                this.a = 0;
+                time = 0;
+            }
+            if (this.x + this.r >= canvas.width) {
+                this.v = -this.v;
+            }
+            if (this.x + this.v <= this.r) {
+                this.v = -this.v
+            }
+            this.v = this.v * this.hsms;            // do có ma sát vận tốc sẽ giảm dần
+            this.x += this.v
+            this.draw()
+        }
+    }
+    let ball = new Ball(50, canvas.height * 0.5, 50, 'red');
+    
+    let time;
+
+    addEventListener('keyup', function(event) {
+        time = event.timeStamp / 1000;
+        console.log(event);
+        ball.impact();   
+    })
+    function animate() {
+        requestAnimationFrame(animate)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ball.move();
+    }
+    animate();
+</script>
+</body>
+</html>
