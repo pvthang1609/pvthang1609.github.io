@@ -33,7 +33,7 @@
             ctx.closePath();
         }
         impact() {
-            ball.a += 5;
+            ball.a = 5;
             ball.t = 5;
         }
         move() {
@@ -59,9 +59,8 @@
     let ball = new Ball(50, canvas.height * 0.5, 50, 'red');
 
     addEventListener('keypress', function(event) {
-        console.log(event)
         if (event.key == "q"){
-            ball.impact(); 
+            ball.impact();
         }
     })
     function animate() {
