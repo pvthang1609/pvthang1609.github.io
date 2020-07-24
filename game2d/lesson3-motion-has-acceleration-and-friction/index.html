@@ -56,11 +56,12 @@
     }
     let ball = new Ball(50, canvas.height * 0.5, 50, 'red');
     
-    let time;
+    let time;                   // F = a.m - khối lượng giữ nguyên nên F thay đổi khi a thay đổi, ở đây thêm 1 biến time để tính thời gian giữ nhấn phím, thời gian giữ nhấn phím càng lớn thì a càng lớn -> F càng lớn, bóng đi càng xa
+    let timeArr = [0];
 
     addEventListener('keyup', function(event) {
-        time = event.timeStamp / 1000;
-        console.log(event);
+        timeArr.push(event.timeStamp / 1000);
+        time = timeArr[(timeArr.length -1)] - timeArr[(timeArr.length -2)]          // vì timeStamp mới sẽ là timeStamp cũ stack với thời gian giữ phím
         ball.impact();   
     })
     function animate() {
