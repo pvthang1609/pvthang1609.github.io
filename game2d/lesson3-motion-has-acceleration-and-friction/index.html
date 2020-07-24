@@ -33,15 +33,17 @@
             ctx.closePath();
         }
         impact() {
-            ball.a = 10 * time;
+            ball.a += 5;
             ball.t = 5;
         }
         move() {
             if (this.a != 0 && ball.t-- > 0) {
-                console.log(ball.a)
-                this.v += this.a
-                this.a = 0;
-                time = 0;
+                if (this.v < 0) {
+                    this.v -= this.a
+                }else {
+                    this.v += this.a
+                }
+                this.a = 0;  
             }
             if (this.x + this.r >= canvas.width) {
                 this.v = -this.v;
@@ -55,14 +57,12 @@
         }
     }
     let ball = new Ball(50, canvas.height * 0.5, 50, 'red');
-    
-    let time;                   // F = a.m - khối lượng giữ nguyên nên F thay đổi khi a thay đổi, ở đây thêm 1 biến time để tính thời gian giữ nhấn phím, thời gian giữ nhấn phím càng lớn thì a càng lớn -> F càng lớn, bóng đi càng xa
-    let timeArr = [0];
 
-    addEventListener('keyup', function(event) {
-        timeArr.push(event.timeStamp / 1000);
-        time = timeArr[(timeArr.length -1)] - timeArr[(timeArr.length -2)]          // vì timeStamp mới sẽ là timeStamp cũ stack với thời gian giữ phím
-        ball.impact();   
+    addEventListener('keypress', function(event) {
+        console.log(event)
+        if (event.key == "q"){
+            ball.impact(); 
+        }
     })
     function animate() {
         requestAnimationFrame(animate)
