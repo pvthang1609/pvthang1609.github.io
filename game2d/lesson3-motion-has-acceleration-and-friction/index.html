@@ -58,8 +58,8 @@
     }
     let ball = new Ball(50, canvas.height * 0.5, 50, 'red');
 
-    addEventListener('keypress', function(event) {
-        if (event.key == "q"){
+    addEventListener('keydown', function(event) {
+        if (event.keyCode == "39"){
             ball.impact();
         }
     })
