@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Game</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+        canvas.style.background = "black";
+        let ctx = canvas.getContext('2d');
+
+        class Ball {
+            constructor(x, y, r, color) {
+                this.x = x;
+                this.y = y;
+                this.r = r;
+                this.c = color;
+                this.dx = 0;
+                this.dy = 0;
+            }
+            drawBoss() {
+                ctx.beginPath();
+                ctx.fillStyle = this.c;
+                ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+                ctx.fill();
+                ctx.font = "15px Arial";
+                ctx.fillStyle = '#000';
+                ctx.fillText("boss", this.x - 15, this.y + 5);
+                ctx.closePath();
+                if (score.score >= pointArr.length * 0.7) {
+                    this.r = 30;
+                }
+                if (score.score >= pointArr.length * 0.9) {
+                    this.r = 40;
+                }
+            }
+            draw() {
+                ctx.beginPath()
+                ctx.fillStyle = this.c;
+                ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+                ctx.fill();
+                ctx.closePath();
+            }
+            left() {
+                this.dx = -5;
+                this.dy = 0;
+            }
+            right() {
+                this.dx = 5
+                this.dy = 0
+            }
+            up() {
+                this.dx = 0
+                this.dy = -5
+            }
+            down() {
+                this.dx = 0
+                this.dy = 5
+            }
+            move() {
+                if (this.x + this.dx > canvas.width - this.r) {
+                    this.dx = -this.dx
+                }
+                if (this.x + this.dx < this.r) {
+                    this.dx = -this.dx
+                }
+                if (this.y + this.dy > canvas.height - this.r) {
+                    this.dy = -this.dy
+                }
+                if (this.y + this.dy < this.r) {
+                    this.dy = -this.dy
+                }
+                let n = pointArr.length;
+                while (n--) {
+                    if (boss.x + boss.r >= pointArr[n].x - pointArr[n].r && boss.x - boss.r <= pointArr[n].x + pointArr[n].r
+                        && boss.y + boss.r >= pointArr[n].y - pointArr[n].r && boss.y - boss.r <= pointArr[n].y + pointArr[n].r) {
+                            pointArr.splice(n,1)
+                            score.score += 1;
+                    }
+                }
+                this.x += this.dx;
+                this.y += this.dy;
+                this.drawBoss();
+            }
+        }
+
+        class Score {
+            constructor(score) {
+                this.score = score;
+            }
+            drawScore() {
+                ctx.beginPath();
+                ctx.font = "100px Arial";
+                ctx.fillStyle = '#fff';
+                ctx.fillText(this.score, 100, canvas.height -50);
+                ctx.closePath();
+            }
+        }
+
+        let score = new Score(0)
+
+        
+
+
+        function randomNumber(min, max) {
+            return Math.ceil(Math.random() * (max - min) + min)
+        }
+
+        let numberOfPoint = 99
+        let pointArr = []
+
+        for (let i = 0; i <= numberOfPoint; i++) {
+            var randomWidth = randomNumber(20, canvas.width - 20);
+            var randomHeight = randomNumber(20, canvas.height - 20);
+            var point = new Ball(randomWidth, randomHeight, 10, "red")
+            pointArr.push(point);
+        }
+        // function drawPoint() {
+        //     for (let i = 0; i <= numberOfPoint; i++) {
+        //         pointArr[i].draw()
+        //     }
+        // }
+        let radiusBoss = 20;        // tạo biến radius của boss khi boss ăn đc nhiều point thì radius ++
+        let boss = new Ball(20, 20, radiusBoss, "yellow")
+        boss.drawBoss()
+
+        function drawWin() {
+                ctx.beginPath()
+                ctx.font = "100px Arial";
+                ctx.fillStyle = 'yellow';
+                ctx.fillText(`My score: ${score.score}`, canvas.width * 0.5 - 300, canvas.height * 0.5);
+                ctx.closePath();
+            }
+
+        addEventListener('keypress', function(event){
+            if (event.keyCode == 100) {
+                boss.right();
+            }
+            if (event.keyCode == 97) {
+                boss.left();
+            }
+            if (event.keyCode == 115) {
+                boss.down();
+            }
+            if (event.keyCode == 119) {
+                boss.up();
+            }
+            
+        })
+        
+        
+       
+        
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // drawPoint()
+            pointArr.forEach((point) => point.draw())
+            boss.move();
+            score.drawScore()
+            
+            if (pointArr.length == 0) {
+                        boss.dx = 0;
+                        boss.dy = 0;
+                        drawWin();
+                    }
+        }
+        animate();
+    </script>
+    
+</body>
+</html>
