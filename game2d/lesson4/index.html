@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+</head>
+<body>
+    <canvas id ="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+        canvas.style.border = '1px solid #000'
+        canvas.style.background = 'linear-gradient(0deg, rgba(196,209,255,1) 0%, rgba(89,76,155,1) 100%)';
+
+        //function lấy giá trị random==============
+        function random(min, max) {
+            return Math.ceil(Math.random() * (max - min) + min)
+        }
+        //=========================================
+        let ctx = canvas.getContext('2d')
+        
+
+        class Ball {
+            constructor(x, y, r, color, dy) {
+                this.x = x;
+                this.y = y;
+                this.r = r;
+                this.color = color;
+                this.dy = dy;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+                ctx.fill();
+                ctx.closePath();
+            }
+            fly() {
+                if ( this.y - this.dy < -this.r) {
+                    this.y = canvas.height + this.r
+                }
+                this.y -= this.dy;
+                this.draw();
+            }
+        }
+
+        // let ball = new Ball(200,1000, randomRadius, randomColor)
+
+        let arrCharacters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']; // chuỗi kí tự để lấy mã màu ngẫu nhiên
+        let numberOfBall = 0
+        let arrBall = []
+
+        //vòng lặp for push các giá trị bóng vào mảng
+        function pushBallToArr() {
+            for (i = 0; i <= numberOfBall; i++) {
+                let randomDy = random(2, 10)                    // random tốc độ bay lên của mỗi bóng
+                let randomColor = `#${arrCharacters[random(0,15)]}${arrCharacters[random(0,15)]}${arrCharacters[random(0,15)]}${arrCharacters[random(0,15)]}${arrCharacters[random(0,15)]}${arrCharacters[random(0,15)]}`
+                let randomRadius = random(20, 100);
+                let randomX = random(randomRadius, canvas.width - randomRadius);
+                let ball = new Ball(randomX, canvas.height + randomRadius, randomRadius, randomColor, randomDy)
+                arrBall.push(ball);
+            }
+        }
+        addEventListener('click', function() {
+            pushBallToArr();                            //mỗi lần click push 1 ball vào mảng arrBall
+        })
+
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            arrBall.forEach((ball) => ball.draw())
+            arrBall.forEach((ball) => ball.fly())
+        }
+        animate();
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
