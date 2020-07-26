@@ -1,0 +1,5 @@
+class foods {
+    constructor(game) {
+        
+    }
+}
