@@ -84,16 +84,15 @@ body {
     border-top: 1px solid #fff ;
     height: 110px;
     width: 250px;
-    margin: 25px auto 0px auto;
+    margin: 20px auto 0px auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
 .weatherOnTime_block {
-    margin: 0 10px;
     height: 90px;
-    width: 50px;
+    width: 55px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -102,4 +101,11 @@ body {
 .weatherOnTime_iconWeather {
     height: 50px;
     width: 50px;
+    margin-bottom: 5px;
+}
+.weatherOnTime_time0,
+.weatherOnTime_time1,
+.weatherOnTime_time2 {
+    font-size: 11px;
+    margin-bottom: 5px;
 }
