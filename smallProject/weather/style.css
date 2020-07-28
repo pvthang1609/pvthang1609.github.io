@@ -1,0 +1,105 @@
+/* background nhiều mây - linear-gradient(45deg, rgba(71,174,207,1) 0%, rgba(90,181,209,1) 100%) */
+/* background nắng - linear-gradient(45deg, rgba(239,164,132,1) 0%, rgba(246,204,119,1) 100%) */
+/* background mưa - linear-gradient(45deg, rgba(70,68,118,1) 0%, rgba(47,79,115,1) 100%) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comfortaa', cursive;
+    color: #fff;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+body {
+    background: linear-gradient(90deg, rgba(76,56,143,1) 0%, rgba(163,62,142,1) 100%);
+}
+.wapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    height: 550px;
+    width: 300px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, rgba(71,174,207,1) 0%, rgba(90,181,209,1) 100%);
+    padding: 20px;
+}
+.today {
+    line-height: 30px;
+    text-align: center;
+    margin: 0 auto;
+    width: 250px;
+    height: 30px;
+    font-size: 15px;
+}
+.time {
+    line-height: 40px;
+    text-align: center;
+    margin: 0 auto;
+    width: 200px;
+    height: 40px;
+    font-size: 35px;
+}
+.location {
+    line-height: 30px;
+    text-align: center;
+    margin: 0 auto;
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+}
+.iconWeather {
+    margin: 0 auto;
+    width: 200px;
+    height: 150px;
+}
+.iconWeather img {
+    margin: 20px auto;
+    width: 150px;
+}
+.temp {
+    font-weight: 700;
+    height: 60px;
+    width: 200px;
+    margin: 0 auto;
+    line-height: 60px;
+    font-size: 50px;
+    text-align: center;
+}
+.daysOfTheWeek {
+    height: 30px;
+    width: 200px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    margin: 15px auto;
+}
+.weatherOnTime {
+    border-top: 1px solid #fff ;
+    height: 110px;
+    width: 250px;
+    margin: 25px auto 0px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.weatherOnTime_block {
+    margin: 0 10px;
+    height: 90px;
+    width: 50px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+.weatherOnTime_iconWeather {
+    height: 50px;
+    width: 50px;
+}
