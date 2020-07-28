@@ -90,18 +90,7 @@ function getWeather(latitude, longitude) {
     let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${key}`
     let api0 = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
 
-    //lấy Tên vị trí bằng api0
-    fetch(api0)
-    .then( function(response){
-        let data0 = response.json();
-        return data0;
-    })
-    .then( function(data) {
-        selectLocation.innerHTML = `${data.name}`;
-    })
-
-
-
+    
     // lấy thời tiết, dự báo 3 ngày tới bằng api
     fetch(api)
     .then( function(response){
@@ -270,6 +259,19 @@ function getWeather(latitude, longitude) {
                 break;        
         }
     })
+
+    //lấy Tên vị trí bằng api0
+    fetch(api0)
+    .then( function(response){
+        let data0 = response.json();
+        return data0;
+    })
+    .then( function(data) {
+        selectLocation.innerHTML = `${data.name}`;
+    })
+
+
+
 }
 
 function getLocation() {
