@@ -12,6 +12,7 @@ var selectWeatherOnTime_iconWeather_image2 = document.querySelector('.weatherOnT
 var selectWeatherOnTime_temp0 = document.querySelector('.weatherOnTime_temp0')
 var selectWeatherOnTime_temp1 = document.querySelector('.weatherOnTime_temp1')
 var selectWeatherOnTime_temp2 = document.querySelector('.weatherOnTime_temp2')
+var selectLocation =document.querySelector('.location')
 
 var arrDay = ['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
 
@@ -87,7 +88,22 @@ let weather2 = {
 
 function getWeather(latitude, longitude) {
     let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${key}`
+    let api0 = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
 
+    //lấy Tên vị trí bằng api0
+    fetch(api0)
+    .then( function(response){
+        let data0 = response.json();
+        console.log(data0)
+        return data0;
+    })
+    .then( function(data) {
+        selectLocation.innerHTML = `${data.name}`;
+    })
+
+
+
+    // lấy thời tiết, dự báo 3 ngày tới bằng api
     fetch(api)
     .then( function(response){
         let data = response.json();
