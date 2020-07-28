@@ -94,7 +94,6 @@ function getWeather(latitude, longitude) {
     fetch(api0)
     .then( function(response){
         let data0 = response.json();
-        console.log(data0)
         return data0;
     })
     .then( function(data) {
@@ -107,7 +106,6 @@ function getWeather(latitude, longitude) {
     fetch(api)
     .then( function(response){
         let data = response.json();
-        console.log(data)
         return data;
     })
     .then( function(data) {
@@ -125,8 +123,6 @@ function getWeather(latitude, longitude) {
 
         weather2.temp = Math.round(data.daily[day + 3].temp.day - 273.115)
         weather2.icon = data.daily[day + 3].weather[0].icon
-
-        console.log(weather0, weather1, weather2)
     })
     .then( function pushWeather() {
         switch(weather.icon) {
