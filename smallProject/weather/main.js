@@ -112,7 +112,6 @@ function getWeather(latitude, longitude) {
 
         weather2.temp = Math.round(data.daily[day + 3].temp.day - 273.115)
         weather2.icon = data.daily[day + 3].weather[0].icon
-        console.log(data)
     })
     .then( function pushWeather() {
         switch(weather.icon) {
