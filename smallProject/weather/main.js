@@ -12,7 +12,8 @@ var selectWeatherOnTime_iconWeather_image2 = document.querySelector('.weatherOnT
 var selectWeatherOnTime_temp0 = document.querySelector('.weatherOnTime_temp0')
 var selectWeatherOnTime_temp1 = document.querySelector('.weatherOnTime_temp1')
 var selectWeatherOnTime_temp2 = document.querySelector('.weatherOnTime_temp2')
-var selectLocation =document.querySelector('.location')
+var selectLocation = document.querySelector('.location')
+var selectContainer = document.querySelector('.container')
 
 var arrDay = ['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
 
@@ -116,44 +117,56 @@ function getWeather(latitude, longitude) {
     .then( function pushWeather() {
         switch(weather.icon) {
             case '01d':
-                selectIconWeather_image.src = 'icon/icon01/01d-clearSky.png'
+                selectIconWeather_image.src = 'icon/icon01/01d-clearSky.png';
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(239,164,132,1) 0%, rgba(246,204,119,1) 100%)';
                 break;
             case '01n':
-                selectIconWeather_image.src = 'icon/icon01/01n-clearSky.png'
+                selectIconWeather_image.src = 'icon/icon01/01n-clearSky.png';
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(239,164,132,1) 0%, rgba(246,204,119,1) 100%)';
                 break;
             case "02d":
                 selectIconWeather_image.src = 'icon/icon01/02d-fewClouds.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(239,164,132,1) 0%, rgba(246,204,119,1) 100%)';
                 break;
             case "02n":
                 selectIconWeather_image.src = 'icon/icon01/02n-fewClouds.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(239,164,132,1) 0%, rgba(246,204,119,1) 100%)';
                 break;
             case "03d":
             case "03n":
                 selectIconWeather_image.src = 'icon/icon01/03d_n-scatteredClouds.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(71,174,207,1) 0%, rgba(90,181,209,1) 100%)';
                 break;
             case "04d":
             case "04n":
                 selectIconWeather_image.src = 'icon/icon01/04d_n-brokenClouds.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(71,174,207,1) 0%, rgba(90,181,209,1) 100%)';
                 break;
             case "09d":
             case "09n":
                 selectIconWeather_image.src = 'icon/icon01/09d_n-showerRain.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(70,68,118,1) 0%, rgba(47,79,115,1) 100%)';
                 break;
             case "10d":
                 selectIconWeather_image.src = 'icon/icon01/10d-rain.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(70,68,118,1) 0%, rgba(47,79,115,1) 100%)';
                 break;
             case "10n":
                 selectIconWeather_image.src = 'icon/icon01/10n-rain.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(70,68,118,1) 0%, rgba(47,79,115,1) 100%)';
                 break;
             case "11d":
             case "11n":
                 selectIconWeather_image.src = 'icon/icon01/11d_n-thunderstorm.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(70,68,118,1) 0%, rgba(47,79,115,1) 100%)';
                 break;  
             case "50d":
                 selectIconWeather_image.src = 'icon/icon01/50d-mist.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(70,68,118,1) 0%, rgba(47,79,115,1) 100%)';
                 break; 
             case "50n":
                 selectIconWeather_image.src = 'icon/icon01/50n-mist.png'
+                selectContainer.style.background = 'linear-gradient(45deg, rgba(70,68,118,1) 0%, rgba(47,79,115,1) 100%)';
                 break; 
         }
         switch(weather0.icon) {
