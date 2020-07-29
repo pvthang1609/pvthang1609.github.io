@@ -27,8 +27,9 @@ body {
     height: 550px;
     width: 300px;
     border-radius: 10px;
-    background: linear-gradient(45deg, rgba(71,174,207,1) 0%, rgba(90,181,209,1) 100%);
+    background: linear-gradient(45deg, rgba(239,164,132,1) 0%, rgba(246,204,119,1) 100%);
     padding: 20px;
+    box-shadow: 0 0 10px rgb(61, 61, 61);
 }
 .today {
     line-height: 30px;
