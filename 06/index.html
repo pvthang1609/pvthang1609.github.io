@@ -6,7 +6,59 @@
     <title>Point Game</title>
 </head>
 <body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #canvas {
+            display: none;
+        }
+        .replay {
+            height: 50px;
+            width: 200px;
+            color: yellow;
+            font-size: 20px;
+            cursor: pointer;
+            border: 2px solid yellow;
+            background: none;
+            position: absolute;
+            top: 59%;
+            left: 50%;
+            transform: translate(-50px, -50px);
+            display: none;
+            outline: none;
+        }
+        .replay:hover{
+            background-color: rgb(44, 48, 250);
+        }
+        .start {
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(90deg, rgba(76,56,143,1) 0%, rgba(163,62,142,1) 100%);
+        }
+        .start__button {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            color: #ccc;
+            border: 2px solid #ccc;
+            background-color: rgba(76,56,143,1);
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+    <div class="start">
+        <button class="start__button" onclick="startGame()">Chơi</button>
+    </div>
     <canvas id="canvas"></canvas>
+    <button class="replay" onclick="newGame()">Chơi lại</button>
+    
     <script>
         let canvas = document.getElementById('canvas');
         canvas.width = innerWidth;
@@ -111,23 +163,22 @@
             return Math.ceil(Math.random() * (max - min) + min)
         }
 
-        let numberOfPoint = 99
+        let numberOfPoint = 2
         let pointArr = []
-
-        for (let i = 0; i <= numberOfPoint; i++) {
-            var randomWidth = randomNumber(20, canvas.width - 20);
-            var randomHeight = randomNumber(20, canvas.height - 20);
-            var point = new Ball(randomWidth, randomHeight, 10, "red")
-            pointArr.push(point);
+        function pushPointToArr() {
+            for (let i = 0; i <= numberOfPoint; i++) {
+                var randomWidth = randomNumber(20, canvas.width - 20);
+                var randomHeight = randomNumber(20, canvas.height - 20);
+                var point = new Ball(randomWidth, randomHeight, 10, "red")
+                pointArr.push(point);
+            }
         }
-        // function drawPoint() {
-        //     for (let i = 0; i <= numberOfPoint; i++) {
-        //         pointArr[i].draw()
-        //     }
-        // }
+        pushPointToArr();
+
+
         let radiusBoss = 20;        // tạo biến radius của boss khi boss ăn đc nhiều point thì radius ++
         let boss = new Ball(20, 20, radiusBoss, "yellow")
-        boss.drawBoss()
+        
 
         function drawWin() {
                 ctx.beginPath()
@@ -135,7 +186,8 @@
                 ctx.fillStyle = 'yellow';
                 ctx.fillText(`My score: ${score.score}`, canvas.width * 0.5 - 300, canvas.height * 0.5);
                 ctx.closePath();
-            }
+                document.querySelector('.replay').style.display = 'block';
+        }
 
         addEventListener('keypress', function(event){
             if (event.keyCode == 100) {
@@ -153,7 +205,20 @@
             
         })
         
-        
+        function newGame() {
+            pointArr = []
+            pushPointToArr()
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            boss.r = 20
+            boss.x = 20
+            boss.y = 20
+            score.score = 0;
+            document.querySelector('.replay').style.display = 'none';
+        }
+        function startGame() {
+            document.querySelector('.start').style.display = 'none';
+            document.querySelector('#canvas').style.display = 'block';
+        }
        
         
         
