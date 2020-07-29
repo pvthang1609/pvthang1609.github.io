@@ -112,6 +112,7 @@ function getWeather(latitude, longitude) {
 
         weather2.temp = Math.round(data.daily[day + 3].temp.day - 273.115)
         weather2.icon = data.daily[day + 3].weather[0].icon
+        console.log(data)
     })
     .then( function pushWeather() {
         switch(weather.icon) {
@@ -148,7 +149,13 @@ function getWeather(latitude, longitude) {
             case "11d":
             case "11n":
                 selectIconWeather_image.src = 'icon/icon01/11d_n-thunderstorm.png'
-                break;        
+                break;  
+            case "50d":
+                selectIconWeather_image.src = 'icon/icon01/50d-mist.png'
+                break; 
+            case "50n":
+                selectIconWeather_image.src = 'icon/icon01/50n-mist.png'
+                break; 
         }
         switch(weather0.icon) {
             case '01d':
@@ -184,6 +191,12 @@ function getWeather(latitude, longitude) {
             case "11d":
             case "11n":
                 selectWeatherOnTime_iconWeather_image0.src = 'icon/icon01/11d_n-thunderstorm.png'
+                break; 
+            case "50d":
+                selectWeatherOnTime_iconWeather_image0.src = 'icon/icon01/50d-mist.png'
+                break; 
+            case "50n":
+                selectWeatherOnTime_iconWeather_image0.src = 'icon/icon01/50n-mist.png'
                 break;        
         }
         switch(weather1.icon) {
@@ -220,6 +233,12 @@ function getWeather(latitude, longitude) {
             case "11d":
             case "11n":
                 selectWeatherOnTime_iconWeather_image1.src = 'icon/icon01/11d_n-thunderstorm.png'
+                break;
+            case "50d":
+                selectWeatherOnTime_iconWeather_image1.src = 'icon/icon01/50d-mist.png'
+                break; 
+            case "50n":
+                selectWeatherOnTime_iconWeather_image1.src = 'icon/icon01/50n-mist.png'
                 break;        
         }
         switch(weather2.icon) {
@@ -256,6 +275,12 @@ function getWeather(latitude, longitude) {
             case "11d":
             case "11n":
                 selectWeatherOnTime_iconWeather_image2.src = 'icon/icon01/11d_n-thunderstorm.png'
+                break;
+            case "50d":
+                selectWeatherOnTime_iconWeather_image2.src = 'icon/icon01/50d-mist.png'
+                break; 
+            case "50n":
+                selectWeatherOnTime_iconWeather_image2.src = 'icon/icon01/50n-mist.png'
                 break;        
         }
     })
