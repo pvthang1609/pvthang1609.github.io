@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+button {
+    border: none;
+    outline: none;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(45deg, rgba(186,83,112,1) 0%, rgba(244,226,216,1) 100%);
+}
+.calc {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 830px;
+    width: 505px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(63, 63, 63);
+    background: linear-gradient(135deg, rgba(69,104,220,1) 0%, rgba(176,106,179,1) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.darkMode {
+    height: 50px;
+    width: 445px;
+}
+.output {
+    height: 180px;
+    width: 445px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.input {
+    height: 540px;
+    width: 445px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+.operator {
+    text-align: right;
+    font-size: 30px;
+    font-weight: 700;
+    height: 80px;
+    width: 445px;
+    line-height: 80px;
+    color: #fff;
+}
+.result {
+    text-align: right;
+    font-size: 75px;
+    height: 100px;
+    width: 445px;
+    line-height: 100px;
+    font-weight: 700;
+    color: #fff;
+}
+.button {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 700;
+    color: #333333;
+    background: #e6e6e6;
+    cursor: pointer;
+}
+
+#zero {
+    width: 202px;
+    border-radius: 45px;
+}
+#delete,
+#clear,
+#percent,
+#division,
+#multiplication,
+#subtraction,
+#summation,
+#calculate {
+    background-color: rgb(139, 59, 82);
+    color: #fff;
+}
