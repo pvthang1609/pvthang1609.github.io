@@ -14,8 +14,8 @@ let buttons = [
     {
         name: 'percent',
         symbol: '%',
-        formula: '/= 100',
-        type: 'key'
+        formula: '/100',
+        type: 'number'
     },
     {
         name: 'division',
@@ -43,7 +43,7 @@ let buttons = [
     },
     {
         name: 'multiplication',
-        symbol: 'X',
+        symbol: 'x',
         formula: '*',
         type: 'operator'
     },
@@ -112,7 +112,7 @@ let buttons = [
         symbol: '=',
         formula: '=',
         type: 'calculate'
-    },
+    }
 ]
 
 //tạo biến select
@@ -128,13 +128,55 @@ for (let i = 0; i < buttons.length; i ++) {
 }
 
 selectInput.addEventListener('click', () => {
-    console.log(event.target.id)
     buttons.forEach(button => {
         if(event.target.id == button.name) {
             calculator(button);
     }})
 })
 
-function calculator(button) {
-    console.log(button)
+let data = {
+    operator: [],                       // hiển thị công thức tính trên dòng đầu
+    result: []                          // sử dụng eval và hàm join để tính và hiện thị ra result dòng thứ 2 output
+}   
+
+function updateToScreen() {
+        document.querySelector('.operator').innerHTML = ``
+        data.operator.forEach(operator => {
+        document.querySelector('.operator').innerHTML += `${operator}`
+    })
 }
+
+function createNumberFromString() {        //ghép các phần tử của mảng thành số
+    return eval(data.result.join(''));
+}
+
+
+function calculator(button) {
+    
+
+    if (button.type == 'key') {
+        if(button.name == 'delete') {
+            data.operator.pop();            //đẩy đi phần tử cuối mảng
+            data.result.pop();
+            updateToScreen();
+        }
+        if(button.name == 'clear') {
+            data.operator.splice(0, data.operator.length);
+            data.result.splice(0, data.result.length);
+            document.querySelector('.result').innerHTML = `0`
+            updateToScreen();
+        }
+    }
+    if (button.type == 'number' || button.type == 'operator') {
+        data.operator.push(button.symbol);
+        data.result.push(button.formula);
+        updateToScreen()
+    }
+    if (button.type == 'calculate') {
+        document.querySelector('.result').innerHTML = Math.round(createNumberFromString() * 100000000) / 100000000;
+    }
+    
+    console.log(`result = ${data.result}`)
+}
+
+
