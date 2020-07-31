@@ -30,10 +30,7 @@ body {
     align-items: center;
     justify-content: space-around;
 }
-.darkMode {
-    height: 50px;
-    width: 445px;
-}
+
 .output {
     height: 180px;
     width: 445px;
@@ -86,14 +83,23 @@ body {
     width: 202px;
     border-radius: 45px;
 }
-#delete,
-#clear,
-#percent,
-#division,
-#multiplication,
-#subtraction,
-#summation,
-#calculate {
-    background-color: rgb(139, 59, 82);
-    color: #fff;
+.darkMode {
+    height: 50px;
+    width: 445px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.darkMode__button {
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    cursor: pointer;
+    color: #ccc;
+}
+.fa-moon-o:before {
+    font-size: 25px;
+    font-weight: 700;
+    color: #333333;
 }

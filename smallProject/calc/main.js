@@ -179,4 +179,37 @@ function calculator(button) {
     console.log(`result = ${data.result}`)
 }
 
+function darkMode() {
+    document.body.style.background = 'linear-gradient(126deg, rgba(97,67,133,1) 0%, rgba(81,99,149,1) 100%)';
+    document.querySelector('.calc').style.background = 'linear-gradient(302deg, rgba(20,30,48,1) 0%, rgba(36,59,85,1) 100%)';
+    var selectButtons = document.querySelectorAll('.button');
+    selectButtons.forEach( button => {
+        button.style.background = '#376191';
+        button.style.color = '#ccc';
+    })
+    document.querySelector('.darkMode__button').style.background = '#376191'
+}
 
+function normalMode() {
+    document.body.style.background = 'linear-gradient(45deg, rgba(186,83,112,1) 0%, rgba(244,226,216,1) 100%)';
+    document.querySelector('.calc').style.background = 'linear-gradient(135deg, rgba(69,104,220,1) 0%, rgba(176,106,179,1) 100%)';
+    var selectButtons = document.querySelectorAll('.button');
+    selectButtons.forEach( button => {
+        button.style.background = '#e6e6e6';
+        button.style.color = '#333333';
+    })
+    document.querySelector('.darkMode__button').style.background = '#e6e6e6'
+    document.querySelector('.darkMode__button').style.color = '#ccc'
+}
+
+let i = 0;
+
+function selectionMode() {
+    i++;
+    if(i % 2 == 1){
+        darkMode();
+    }
+    else{
+        normalMode();
+    }
+}
