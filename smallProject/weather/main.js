@@ -96,7 +96,9 @@ function getWeather(latitude, longitude) {
     fetch(api)
     .then( function(response){
         let data = response.json();
+        console.log(data)
         return data;
+        
     })
     .then( function(data) {
         let today = new Date();
