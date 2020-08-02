@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techmaster Việt Nam</title>
+    <%- include('./partials/style__index.ejs'); -%>
+    <%- include('./partials/style__menu.ejs'); -%>
+</head>
+<body>
+    <%- include('./partials/menu.ejs'); -%>
+    <div class="container">
+        <% for (i = 0; i < arr.length; i ++) { %>
+                <div class='block'>
+                    <div class="img">
+                        <img src="<%= arr[i].img %>" alt="none">
+                    </div>
+                    <div class="heading">
+                        <%= arr[i].heading %>
+                    </div>
+                    <div class="description">
+                        <%= arr[i].desc %>
+                    </div>
+                    <div class="day">
+                        <%= arr[i].day %>
+                    </div>
+                </div>
+        <% } %>
+    </div>
+    <div class="form">
+        <p>Tạo mới bài viết</p>
+        <form action="/newPost" class="form__form" method="POST">
+            <input type="text" name="heading" placeholder="Nhập tiêu đề bài viết." class="form__input">
+            <input type="text" name="img" placeholder="Nhập url của ảnh tiêu đề." class="form__input">
+            <input type="text" name="desc" placeholder="Nhập phần mô tả ngắn về bài viết." class="form__input">
+            <input type="text" name="day" placeholder="Nhập ngày tháng xuất bản." class="form__input">
+            <button type="submit">Đăng bài</button>
+        </form>
+    </div>
+</body>
+</html>
