@@ -11,19 +11,17 @@ canvas.width = 530;
 
 //BIRD=============================================================================================================
 var imgBird0 = new Image();
-imgBird0.src = "./images/bird0.png"
-
 var imgBird1 = new Image();
-imgBird1.src = "./images/bird1.png"
-
 var imgBird2 = new Image();
+
+imgBird0.src = "./images/bird0.png"
+imgBird1.src = "./images/bird1.png"
 imgBird2.src = "./images/bird2.png"
 
 let arrBrid = [imgBird0, imgBird1, imgBird2];
 
 let frame = 0;
 let i = 0
-
 
 class Bird {
     constructor(x, y) {
@@ -44,9 +42,10 @@ class Bird {
         ctx.drawImage(arrBrid[i], this.x, this.y);
     }
     drop() {
-        if(this.y + this.v > canvas.height - 44) {
-            this.y = canvas.height - 44;
-            this.v = 0
+        if(this.y + this.v > canvas.height - 113) {
+            this.y = canvas.height - 113;
+            this.v = 0;
+            stopMove()
         }
         this.v += this.a
         this.y += this.v
@@ -61,8 +60,9 @@ let bird = new Bird(150, canvas.height * 0.5 - 22);
 //=================================================================================================================
 //BACKGROUND=======================================================================================================
 //background 230 x 625
+let iChangeBg = 0;          // biến đếm thay đổi background
+
 let background = new Image();
-background.src = './images/bg/bg.png'
 
 class Bg {
     constructor(x, y) {
@@ -71,6 +71,12 @@ class Bg {
         this.dx = -0.1;
     }
     draw() {
+       if (iChangeBg % 2 ==0) {
+            background.src = './images/bg/bg.png'
+        }
+        else {
+            background.src = './images/bg/bg-night.png'
+        }
         ctx.beginPath();
         ctx.drawImage(background, this.x, this.y)
     }
@@ -104,7 +110,7 @@ class Ground {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.dx = -1.5;
+        this.dx = -2;
     }
     draw() {
         ctx.beginPath();
@@ -218,28 +224,137 @@ if(score.value > 10) {
     console.log(test)
 }
 //=================================================================================================================
+//RANDOM===========================================================================================================
+
+function random(min, max) {
+    return Math.ceil(Math.random() * (max - min) + min)
+}
+
+//PIPES============================================================================================================
+//pipe 82x710======================================================================================================
 
 
 
-addEventListener('keypress', (event) => {
-    if (event.keyCode = 32) {
-        bird.fly();
+let pipe_top = new Image();
+let pipe_bottom = new Image();
+
+pipe_top.src = './images/pipes/pipe-top.png'
+pipe_bottom.src = './images/pipes/pipe-bottom.png'
+
+class Pipes {
+    constructor(x, y, space){
+        this.x = x;
+        this.y = y;
+        this.space = space
     }
-    bird.a = 0.5;
-})
+    draw() {
+        ctx.beginPath()
+        ctx.drawImage(pipe_top, this.x, this.y)
+        ctx.beginPath()
+        ctx.drawImage(pipe_bottom, this.x, this.y + 710 + this.space)
+    }
+    move() {
+        this.x += -2;
+        this.draw();
+    }
+
+}
+
+let arrPipes = [new Pipes(615, random(-680, -265), random(250, 300))];
+
+function pushPipes() {
+    for (let i = 0; i < 4; i++) {
+        let pipes = new Pipes(arrPipes[i].x + random(350, 450), random(-680, -265), random(250, 300))
+        arrPipes.push(pipes);
+    }
+}
+pushPipes();
+function popPipes() {
+    if(arrPipes[0].x <= -85) {
+        arrPipes.splice(0, 1);
+        let pipes = new Pipes(arrPipes[arrPipes.length - 1].x + random(350, 450), random(-680, -265), random(250, 300))
+        arrPipes.push(pipes);
+    }
+}
+//=================================================================================================================
+//FUNCTION-CONTROL-BIRD============================================================================================
+let isMovePipes = false;
+
+function birdFly(event) {
+        if (event.keyCode == 32) {
+            isMovePipes = true;
+            bird.fly();
+        }
+        bird.a = 0.5;
+}
+addEventListener('keydown', birdFly, true)
+
+//=================================================================================================================
+//FUNCTION-STOP-MOVE===============================================================================================
+
+function stopMove() {
+    arrBg.forEach(bg => {
+        bg.dx = 0;
+    })
+    arrGround.forEach(ground => {
+        ground.dx = 0;
+    })
+    isMovePipes = false;
+    arrBrid[0].src = "./images/bird2.png";
+    arrBrid[1].src = "./images/bird2.png";
+    removeEventListener('keydown', birdFly, true)
+}
+//=================================================================================================================
+//FUNCTION-EVENTCOLLISION==========================================================================================
+
+function eventCollision() {
+        if (bird.x + 51 > arrPipes[0].x
+            && bird.x < arrPipes[0].x + 82
+            &&(bird.y < arrPipes[0].y + 710 || bird.y + 36 > arrPipes[0].y + 710 + arrPipes[0].space)) {
+                stopMove();
+        }
+}
+//=================================================================================================================
+//FUNCTION-ADDSCORE================================================================================================
+
+function addScore() {
+    if (bird.x == arrPipes[0].x + 82 || bird.x == arrPipes[0].x + 82 + 1) {
+        score.value++;
+    }
+}
+
+//=================================================================================================================
+//FUNCTION-ANIMATE=================================================================================================
 
 function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    addScore();
+    eventCollision();
     arrBg.forEach(bg => {
         bg.move();
-    })
+    });
+//=======================================================
+    if (isMovePipes == true) {
+        arrPipes.forEach(pipes => {
+            pipes.move();
+        });
+    }
+    else {
+        arrPipes.forEach(pipes => {
+            pipes.dx = 0;
+            pipes.draw();
+        });
+    }
+//=======================================================
     arrGround.forEach(ground => {
         ground.move();
-    })
-    score.drawImgNumber()
+    });
+    score.drawImgNumber();
     bird.drop();
+    popPipes();
     popGround();
     popBg();
 }
 animate();
+//=================================================================================================================
