@@ -281,13 +281,11 @@ function popPipes() {
 let isMovePipes = false;
 
 function birdFly(event) {
-        if (event.keyCode == 32) {
-            isMovePipes = true;
-            bird.fly();
-        }
+        isMovePipes = true;
+        bird.fly();
         bird.a = 0.5;
 }
-addEventListener('keydown', birdFly, true)
+addEventListener('click', birdFly, true)
 
 //=================================================================================================================
 //FUNCTION-STOP-MOVE===============================================================================================
@@ -302,7 +300,7 @@ function stopMove() {
     isMovePipes = false;
     arrBrid[0].src = "./images/bird2.png";
     arrBrid[1].src = "./images/bird2.png";
-    removeEventListener('keydown', birdFly, true)
+    removeEventListener('click', birdFly, true)
 }
 //=================================================================================================================
 //FUNCTION-EVENTCOLLISION==========================================================================================
