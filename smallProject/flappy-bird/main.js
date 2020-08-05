@@ -283,7 +283,7 @@ let isMovePipes = false;
 function birdFly(event) {
         isMovePipes = true;
         bird.fly();
-        bird.a = 0.5;
+        bird.a = 0.6;
 }
 addEventListener('click', birdFly, true)
 
