@@ -86,6 +86,32 @@ function keyObj(object) {
 
 //3. Viết hàm kiểm tra key có tồn tại trong Object không
 // dùng hasOwnProperty()
+
 function checkKey(object, key) {
     return object.hasOwnProperty(key);
 }
+
+//4. Viết hàm kiểm tra Object có độ dài bao nhiêu
+
+function checkLength(object) {
+    let a = Object.keys(object);     // trả về 1 mảng dùng for push phần tử của mảng vào chuỗi
+    return a.length;
+}
+
+//5. Cho mảng các user mỗi object có cấu trúc như sau. Viết function lấy ra những user có tuổi > 25 và isStatus = true
+
+function myfunction(user) {
+    user.forEach(element => {
+        if(element.age > 25 && element.isStatus == true) {
+            console.log(element)
+        }
+    });
+}
+
+//6. Tương tự bài 5, Viết function sắp xếp các user theo tuổi tăng dần
+
+function compareNumbers(a, b) {
+    return a.age - b.age;
+  }
+
+user.sort(compareNumbers);
