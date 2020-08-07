@@ -69,11 +69,7 @@ function tongUoc(n) {
 
 function keyObj(object) {
     let a = Object.keys(object);     // trả về 1 mảng dùng for push phần tử của mảng vào chuỗi
-    let str = '';
-    for (let i = 0; i < a.length; i++) {
-        str += `${a[i]} `
-    }
-    return str;
+    return a.join();
 }
 
 //2. Viết hàm để lấy danh sách các value của object
