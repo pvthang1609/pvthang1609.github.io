@@ -1,6 +1,4 @@
-// background: 144*256      ****nhân đôi giá trị***
-// ground: 168*56
-//bird: 17*12
+//canvas h: 710; w: 530
 const DEGREE = Math.PI / 180
 
 const game = {
@@ -13,27 +11,28 @@ const game = {
 let canvas = document.querySelector('.canvas');
 let ctx = canvas.getContext('2d')
 
-canvas.height = 624;
-canvas.width = 400;
+canvas.height = 710;
+canvas.width = 530;
 canvas.style.border = '1px solid black'
 
 const sprites = new Image()
-sprites.src = './img/sprites-flappy-bird.png'
+sprites.src = './img/sprites.png'
 
 //Bg
-const bg = {
-    sX: 0,
+const bg = { 
+    sX: [163, 393],
     sY: 0,
-    sW: 144,
-    sH: 256,
+    sW: 229,
+    sH: 625,
     cX: 0,
     cY: 0,
-    cW: 144 * 2,
-    cH: 256 * 2,
+    cW: 229,
+    cH: 625,
     draw: function() {
         ctx.beginPath();
-        ctx.drawImage(sprites, this.sX, this.sY, this.sW, this.sH, this.cX, this.cY, this.cW, this.cH)
-        ctx.drawImage(sprites, this.sX, this.sY, this.sW, this.sH, this.cX + 287, this.cY, this.cW, this.cH)
+        ctx.drawImage(sprites, this.sX[0], this.sY, this.sW, this.sH, this.cX, this.cY, this.cW, this.cH)
+        ctx.drawImage(sprites, this.sX[0], this.sY, this.sW, this.sH, this.cX + 229, this.cY, this.cW, this.cH)
+        ctx.drawImage(sprites, this.sX[0], this.sY, this.sW, this.sH, this.cX + 458, this.cY, this.cW, this.cH)
     }
 }
 //Ground
@@ -41,23 +40,23 @@ class Ground {
     constructor(cX, cY) {
         this.cX = cX;
         this.cY = cY;
-        this.sX = 292;
-        this.sY = 0;
-        this.sW = 168;
-        this.sH = 56;
-        this.cW = 168 * 2;
-        this.cH = 56 * 2;
-        this.dx = -1;
+        this.sX = 624, 
+        this.sY = [0, 144, 288];
+        this.sW = 215;
+        this.sH = 143;
+        this.cW = 215;
+        this.cH = 143;
+        this.dx = -2;
     }
     draw() {
         ctx.beginPath();
-        ctx.drawImage(sprites, this.sX, this.sY, this.sW, this.sH, this.cX, this.cY, this.cW, this.cH)
+        ctx.drawImage(sprites, this.sX, this.sY[0], this.sW, this.sH, this.cX, this.cY, this.cW, this.cH)
     }
 }
 let arrGround = [];
 
 for (let i = 0; i < 4; i ++) {
-    let ground = new Ground(0 + 335*i, 512);
+    let ground = new Ground(0 + 215*i, 625);
     arrGround.push(ground)
 }
 
@@ -72,9 +71,8 @@ function updateArrGround() {
         ground.cX += ground.dx
     })
     if(arrGround[0].cX <= -336){
-        console.log(arrGround)
         arrGround.splice(0, 1)
-        let ground = new Ground(arrGround[2].cX + 335, 512);
+        let ground = new Ground(arrGround[2].cX + 215, 625);
         arrGround.push(ground)
     }
 }
@@ -87,14 +85,14 @@ class Bird {
         this.cX = cX;
         this.cY = cY;
         this.animate = [
-            {sX: 3, sY: 491},
-            {sX: 31, sY: 491},
-            {sX: 59, sY: 491}
+            {sX: 840, sY: 0},
+            {sX: 900, sY: 0},
+            {sX: 960, sY: 0}
         ]
-        this.sW = 17;
-        this.sH = 12;
-        this.cW = 17 * 2;
-        this.cH = 12 * 2;
+        this.sW = 51;
+        this.sH = 36;
+        this.cW = 51;
+        this.cH = 36;
         this.i = 0
         this.a = 0.3;                 //a là gia tốc
         this.v = 0;                   //v là vận tốc
@@ -134,50 +132,52 @@ class Bird {
             else {
                 this.rotate += this.v / 5
             }
-            if(this.rotate >= 90){
-                this.rotate =90
+            if(this.rotate >= 60){
+                this.rotate =60
             }
-            if(this.rotate <= -25){
-                this.rotate = -25
+            if(this.rotate <= -20){
+                this.rotate = -20
             }
             this.v += this.a
             this.cY += this.v
         }
-        if (this.cY >= 512) {
-            this.cY = 512;
+        if (this.cY >= 590) {
+            this.cY = 625;
             endgame();
         }
         
     }
 }
-let bird = new Bird(50, canvas.height / 2 - 12)
+let bird = new Bird(150, canvas.height / 2 - 12)
 
 //Screen
 const start = {
     draw: function() {
         ctx.beginPath();
-        ctx.drawImage(sprites, 295, 59, 92, 25, canvas.width/2 - 92, 150, 184, 50)
-        ctx.drawImage(sprites, 292, 91, 57, 49, canvas.width/2- 57, 300, 114, 98)
+        ctx.drawImage(sprites, 1012, 0, 228, 61, canvas.width/2 - 114, 50, 228, 61)
+        ctx.drawImage(sprites, 1012, 62, 236, 64, canvas.width/2- 118, 200, 236, 64)
+        ctx.drawImage(sprites, 855, 157, 140, 126, canvas.width/2- 70, 350, 140, 126)
     }
 }
 const end = {
     draw: function() {
         ctx.beginPath();
-        ctx.drawImage(sprites, 3, 259, 113, 57, canvas.width/2 - 113, canvas.height/2 - 57, 226, 114)
+        ctx.drawImage(sprites, 1012, 126, 246, 54, canvas.width/2 - 123, 200, 246, 54)
+        ctx.drawImage(sprites, 624, 432, 290, 145, canvas.width/2 - 145, 350, 290, 145)
     }
 }
 //Number
 const arrNumber = [
-    {name: 0, sX: 496, sY: 60,sW: 12,sH: 18,cW: 36,cH: 54},
-    {name: 1, sX: 136, sY: 455,sW: 8,sH: 18,cW: 24,cH: 54},
-    {name: 2, sX: 292, sY: 160,sW: 12,sH: 18,cW: 36,cH: 54},
-    {name: 3, sX: 306, sY: 160,sW: 12,sH: 18,cW: 36,cH: 54},
-    {name: 4, sX: 320, sY: 160,sW: 12,sH: 18,cW: 36,cH: 54},
-    {name: 5, sX: 334, sY: 160,sW: 12,sH: 18,cW: 36,cH: 54},
-    {name: 6, sX: 292, sY: 184,sW: 12,sH: 18,cW: 36,cH: 54},
-    {name: 7, sX: 306, sY: 184,sW: 12,sH: 18,cW: 36,cH: 54},
-    {name: 8, sX: 320, sY: 184,sW: 12,sH: 18,cW: 36,cH: 54},
-    {name: 9, sX: 334, sY: 184,sW: 12,sH: 18,cW: 36,cH: 54}
+    {name: 0, sX: 1013, sY: 181,sW: 52,sH: 80,cW: 52,cH: 80},
+    {name: 1, sX: 1080, sY: 181,sW: 32,sH: 80,cW: 32,cH: 80},
+    {name: 2, sX: 1127, sY: 181,sW: 52,sH: 79,cW: 52,cH: 79},
+    {name: 3, sX: 1184, sY: 181,sW: 52,sH: 79,cW: 52,cH: 79},
+    {name: 4, sX: 1013, sY: 265,sW: 52,sH: 79,cW: 52,cH: 79},
+    {name: 5, sX: 1070, sY: 265,sW: 52,sH: 79,cW: 52,cH: 79},
+    {name: 6, sX: 1127, sY: 265,sW: 52,sH: 79,cW: 52,cH: 79},
+    {name: 7, sX: 1184, sY: 265,sW: 52,sH: 79,cW: 52,cH: 79},
+    {name: 8, sX: 1013, sY: 349,sW: 52,sH: 79,cW: 52,cH: 79},
+    {name: 9, sX: 1070, sY: 349,sW: 52,sH: 79,cW: 52,cH: 79}
 ]
 class Score {
     constructor(value, cX, cY) {
@@ -192,10 +192,10 @@ class Score {
             this.split = (this.value.toString()).split('');
             arrNumber.forEach(number => {
                 if(this.split[0] == number.name) {
-                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, 10, 10, number.cW, number.cH);
+                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, canvas.width/2 - 52, 60, number.cW, number.cH);
                 }
                 if(this.split[1] == number.name) {
-                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, 45, 10, number.cW, number.cH);
+                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, canvas.width/2 + 2, 60, number.cW, number.cH);
                 }
             })
         }
@@ -203,7 +203,7 @@ class Score {
             this.split = this.value.toString();
             arrNumber.forEach(number => {
                 if(this.split[0] == number.name) {
-                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, 10, 10, number.cW, number.cH);
+                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, canvas.width/2 - 26, 60, number.cW, number.cH);
                 }
             })
         }
@@ -217,7 +217,7 @@ class Score {
                     ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, this.cX, this.cY, number.cW/3, number.cH/3);
                 }
                 if(this.split[1] == number.name) {
-                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, this.cX + 12, this.cY, number.cW/3, number.cH/3);
+                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, this.cX + 18, this.cY, number.cW/3, number.cH/3);
                 }
             })
         }
@@ -225,21 +225,42 @@ class Score {
             this.split = this.value.toString();
             arrNumber.forEach(number => {
                 if(this.split[0] == number.name) {
-                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, this.cX, this.cY, number.cW/3, number.cH/3);
+                    ctx.drawImage(sprites, number.sX, number.sY, number.sW, number.sH, this.cX + 18, this.cY, number.cW/3, number.cH/3);
                 }
             })
         }
     }
 }
-let score = new Score(0, 262, 290);
+let score = new Score(0, 340, 391);
 let arrScore = [];
-let maxScore = new Score(0, 262, 332)
+let maxScore = new Score(0, 340, 443)
 
+//Pipes
+class Pipes {
+    constructor(cX, cY, space) {
+        this.cX = cX;
+        this.cY = cY;
+        this.space = space;
+        this.sXt = 0;
+        this.sYt = 0;
+        this.sXb = 1261;
+        this.sYb = 0;
+        this.sW = 82;
+        this.sH = 710;
+        this.cW = 82;
+        this.cH = 710;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.drawImage(sprites, this.sXt, this.sYt, this.sW, this.sH, this.cX, this.cY, this.cW, this.cH);
+        ctx.drawImage(sprites, this.sXb, this.sYb, this.sW, this.sH, this.cX, this.cY + this.xH + this.space, this.cW, this.cH);
+    }
+}
+let pipes = new Pipes()
 //function endgame & new game
 
 function endgame() {
     game.curent = 2;
-    // arrScore.push(score);
 }
 
 
@@ -252,6 +273,12 @@ addEventListener('click', function(){
             break;
         case 1:
             bird.v = -7;
+            break;
+        case 2:
+            bird.cY = canvas.height / 2 - 12
+            bird.rotate = 0;
+            bird.v = 0;
+            game.curent = 0;
             break;
     }
 })
