@@ -1,7 +1,7 @@
 //canvas h: 710; w: 530
 const DEGREE = Math.PI / 180
 const POINT = new Audio('./sound/sfx_point.wav')
-const DIE = new Audio('./sound/sfx_die.wav')
+const HIT = new Audio('./sound/sfx_hit.wav')
 const game = {
     curent: 0,
     start: 0,
@@ -126,7 +126,7 @@ class Bird {
         ctx.restore()
     }
     update() {
-        if (game.curent == 1) {
+        if (game.curent == 1 || game.curent == 2) {
             if (this.v < 0 ){
                 this.rotate += this.v * 5
             }
@@ -141,7 +141,7 @@ class Bird {
             }
             this.v += this.a
             this.cY += this.v
-            if (bird.cX + 51 > arrPipes[0].cX
+            if (bird.cX + 51 > arrPipes[0].cX + 20
                 && bird.cX < arrPipes[0].cX + 82
                 &&(bird.cY < arrPipes[0].cY + 720 || bird.cY + 36 > arrPipes[0].cY + 720 + arrPipes[0].space)) {
                     endgame();
@@ -152,7 +152,7 @@ class Bird {
         }
         if (this.cY + this.v >= 590) {
             this.cY = 625;
-            endgame();
+            game.curent = 2;
         }
         
     }
@@ -173,6 +173,7 @@ const end = {
         ctx.beginPath();
         ctx.drawImage(sprites, 1012, 126, 246, 54, canvas.width/2 - 123, 200, 246, 54)
         ctx.drawImage(sprites, 624, 432, 290, 145, canvas.width/2 - 145, 350, 290, 145)
+        ctx.drawImage(sprites, 624, 578, 83, 46, canvas.width/2 - 41.5, 500, 83, 46)
     }
 }
 //Number
@@ -241,16 +242,44 @@ class Score {
     }
 }
 let score = new Score(0, 340, 391);
-let arrScore = [];
-let maxScore = new Score(0, 340, 443)
+let maxScore = new Score(0, 340, 443);
 
 function addScore() {
     score.value++;
     POINT.play()
+    maxScore.value = Math.max(score.value, maxScore.value);
 }
-function pushScore() {
-    arrScore.push(score);
+//medal -- huy hiệu
+class Medal {
+    constructor(i) {
+        this.sX = 80;
+        this.sY = [0, 58, 114];             // 0 là bạc, 1 là vàng, 2 là k có gì
+        this.sW = 53;
+        this.sH = 54;
+        this.cX = canvas.width/2 - 97;
+        this.cY = 407;
+        this.cW = 53;
+        this.cH = 54;
+        this.i = i;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.drawImage(sprites, this.sX, this.sY[this.i], this.sW, this.sH, this.cX, this.cY, this.cW, this.cH)
+    }
+    update() {
+        if (score.value == maxScore.value){
+            medal.i = 1;
+        }
+        else if (score.value >= maxScore.value/2 && score.value < maxScore.value) {
+            medal.i = 0;
+        }
+        else {
+            medal.i = 2;
+        }
+    }
 }
+let medal = new Medal(0);
+
 
 //Random
 function random(min, max) {
@@ -303,7 +332,6 @@ function updateArrPipes() {
         arrPipes.splice(0, 1)
         let pipes = new Pipes(arrPipes[arrPipes.length - 1].cX + random(400, 500), random(-660, -300), random(200, 150));
         arrPipes.push(pipes)
-        console.log(arrPipes)
     }
 }
 
@@ -311,33 +339,34 @@ function updateArrPipes() {
 
 //function endgame & new game
 function endgame() {
-    DIE.play();
-    pushScore()
-    game.curent = 2;
-    maxScore = Math.max(arrScore);
-    console.log(arrScore)
+    game.curent =2
     return;
 }
 
-
 //Control
 
-addEventListener('click', function(){
+addEventListener('click', function click() {
     switch (game.curent) {
         case 0:
             game.curent = 1;
             break;
         case 1:
+            HIT.play();
             bird.v = -8;
             break;
         case 2:
-            score.value = 0; 
-            arrPipes = [];
-            newPipes();
-            bird.cY = canvas.height / 2 - 12;
-            bird.rotate = 0;
-            bird.v = 0;
-            game.curent = 0;
+            if (event.offsetX > canvas.width/2 - 41.5
+                && event.offsetX < canvas.width/2 + 41.5
+                && event.offsetY > 500
+                && event.offsetY < 546) {
+                    score.value = 0; 
+                    arrPipes = [];
+                    newPipes();
+                    bird.cY = canvas.height / 2 - 12;
+                    bird.rotate = 0;
+                    bird.v = 0;
+                    game.curent = 0;
+                }
     }
 })
 
@@ -348,14 +377,12 @@ addEventListener('click', function(){
 
 //Update
 function update() {
-    // if (game.curent == 0 || game.curent == 1) {
-        
-    // }
     if(game.curent == 1) {
         updateArrPipes();
         updateArrGround();
     }
-    bird.update()
+    bird.update();
+    medal.update();
 }
 
 //Draw
@@ -364,8 +391,8 @@ function draw() {
     if(game.curent == 0) {
         start.draw()
     }
+    drawArrPipes();
     if(game.curent == 1) {
-        drawArrPipes();
         score.draw(); 
     }
     drawArrGround();
@@ -373,7 +400,8 @@ function draw() {
     if(game.curent == 2) {
         end.draw();
         score.drawSmall();
-        // maxScore.drawSmall();
+        maxScore.drawSmall();
+        medal.draw();
     }
 }
 
@@ -384,7 +412,5 @@ function animate() {
     frame ++;
     update();
     draw();
-
-
 }
 animate()
