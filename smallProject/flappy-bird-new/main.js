@@ -1,7 +1,6 @@
 //canvas h: 710; w: 530
 const DEGREE = Math.PI / 180
 const POINT = new Audio('./sound/sfx_point.wav')
-const HIT = new Audio('./sound/sfx_hit.wav')
 const game = {
     curent: 0,
     start: 0,
@@ -352,7 +351,6 @@ addEventListener('click', function click() {
             game.curent = 1;
             break;
         case 1:
-            HIT.play();
             bird.v = -8;
             break;
         case 2:
