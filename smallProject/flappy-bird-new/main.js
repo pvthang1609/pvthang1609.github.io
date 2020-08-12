@@ -152,6 +152,7 @@ class Bird {
         }
         if (this.cY + this.v >= 590) {
             this.cY = 625;
+            this.v = 0;
             game.curent = 2;
         }
         
