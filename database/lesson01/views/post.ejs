@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techmaster Việt Nam</title>
+    <%- include('./partials/style__menu.ejs'); -%>
+    <%- include('./partials/style__post.ejs'); -%>
+</head>
+<body>
+    <%- include('./partials/menu.ejs'); -%>
+    <div class="containerP">
+        <div class="heading">
+            <h1><%= result.heading %></h1>
+        </div>
+        <div class="date">
+            <p><%= result.day %></p>
+        </div>
+        <div class="image">
+            <img src="<%= result.img %>" alt="none">
+        </div>
+        <div class="pharagraph">
+            <p><%= result.desc %></p>
+        </div>
+        
+    </div>
+
+</body>
+</html>

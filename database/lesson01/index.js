@@ -35,9 +35,21 @@ MongoClient.connect(url, function (err, client) {
 //================================
 
 app.get('/', function(req, res) {
-    let arr = db.collection("techmaster").find().toArray().then(arr => {
+    db.collection("techmaster").find().toArray().then(arr => {
         res.render('index', {
             arr : arr
+        })
+    }).catch(error => {
+        console.log(error)
+    })
+})
+
+app.get('/:id', function(req, res){
+    var id = req.params['id'];
+    let objectId = require('mongodb').ObjectID;
+    db.collection("techmaster").findOne({_id: new objectId(id)}).then(result => {
+        res.render('post.ejs', {
+            result : result
         })
     }).catch(error => {
         console.log(error)

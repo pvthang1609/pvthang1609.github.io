@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Paint</title>
+</head>
+<body>
+    <div class="container">
+        <div class="tools">
+            <div class="color">
+                <div class="tool__color color1 active" onclick="color = 'black'"></div>
+                <div class="tool__color color2" onclick="color = 'red'"></div>
+                <div class="tool__color color3" onclick="color = 'yellow'"></div>
+                <div class="tool__color color4" onclick="color = 'blue'"></div>
+                <div class="tool__color color5" onclick="color = 'blueviolet'"></div>
+            </div>
+            <div class="tool">
+                <div class="eraser">
+                    <img src="https://img.icons8.com/ultraviolet/80/000000/eraser.png" onclick="color = 'white'"/>
+                </div>
+                <div class="reset">
+                    <img src="https://img.icons8.com/officel/80/000000/refresh.png"  onclick="reset()"/>
+                </div>
+            </div>
+            <div class="size">
+                <div class="tool__size size1" onclick="size = 5">
+                    <img src="img/1.png" alt="none">
+                </div>
+                <div class="tool__size size2" onclick="size = 10">
+                    <img src="img/2.png" alt="none">
+                </div>
+                <div class="tool__size size3" onclick="size = 15">
+                    <img src="img/3.png" alt="none">
+                </div>
+                <div class="tool__size size4" onclick="size = 20">
+                    <img src="img/4.png" alt="none">
+                </div>
+                <div class="tool__size size5" onclick="size = 25">
+                    <img src="img/5.png" alt="none">
+                </div>
+            </div>
+        </div>
+        <canvas class="canvas"></canvas>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
