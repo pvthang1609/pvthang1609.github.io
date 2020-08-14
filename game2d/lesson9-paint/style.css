@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 body {
     height: 100vh;
@@ -46,6 +46,7 @@ img {
 }
 .canvas {
     margin-right: 20px;
+    cursor: url(./img/cursor-black.cur) 2 2, auto;
 }
 .color1 {
     background-color: #000;
@@ -64,4 +65,19 @@ img {
 }
 .active {
     border: 5px solid orange;
+}
+.size1 {
+    background: url(./img/1.png);
+}
+.size2 {
+    background: url(./img/2.png);
+}
+.size3 {
+    background: url(./img/3.png);
+}
+.size4 {
+    background: url(./img/4.png);
+}
+.size5 {
+    background: url(./img/5.png);
 }

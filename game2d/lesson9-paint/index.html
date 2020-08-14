@@ -10,11 +10,11 @@
     <div class="container">
         <div class="tools">
             <div class="color">
-                <div class="tool__color color1 active" onclick="color = 'black'"></div>
-                <div class="tool__color color2" onclick="color = 'red'"></div>
-                <div class="tool__color color3" onclick="color = 'yellow'"></div>
-                <div class="tool__color color4" onclick="color = 'blue'"></div>
-                <div class="tool__color color5" onclick="color = 'blueviolet'"></div>
+                <div class="tool__color color1 active" onclick="color = 'black', activeColor()"></div>
+                <div class="tool__color color2" onclick="color = 'red', activeColor()"></div>
+                <div class="tool__color color3" onclick="color = 'yellow', activeColor()"></div>
+                <div class="tool__color color4" onclick="color = 'blue', activeColor()"></div>
+                <div class="tool__color color5" onclick="color = 'blueviolet', activeColor()"></div>
             </div>
             <div class="tool">
                 <div class="eraser">
@@ -25,21 +25,11 @@
                 </div>
             </div>
             <div class="size">
-                <div class="tool__size size1" onclick="size = 5">
-                    <img src="img/1.png" alt="none">
-                </div>
-                <div class="tool__size size2" onclick="size = 10">
-                    <img src="img/2.png" alt="none">
-                </div>
-                <div class="tool__size size3" onclick="size = 15">
-                    <img src="img/3.png" alt="none">
-                </div>
-                <div class="tool__size size4" onclick="size = 20">
-                    <img src="img/4.png" alt="none">
-                </div>
-                <div class="tool__size size5" onclick="size = 25">
-                    <img src="img/5.png" alt="none">
-                </div>
+                <div class="tool__size size1 active" onclick="size = 5, activeSize()"></div>
+                <div class="tool__size size2" onclick="size = 10, activeSize()"></div>
+                <div class="tool__size size3" onclick="size = 15, activeSize()"></div>
+                <div class="tool__size size4" onclick="size = 20, activeSize()"></div>
+                <div class="tool__size size5" onclick="size = 25, activeSize()"></div>
             </div>
         </div>
         <canvas class="canvas"></canvas>
