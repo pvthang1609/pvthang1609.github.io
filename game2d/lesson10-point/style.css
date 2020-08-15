@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Cochin, Georgia, Times, 'Times New Roman', serif
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #E5E5E5;
+}
+.container {
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.left,
+.right,
+.center {
+    width: 300px;
+    height: 100%;
+    text-align: center;
+}
+
+.left,
+.right {
+    padding-top: 123px;
+}
+
+.left__name,
+.right__name {
+    text-transform: uppercase;
+    font-size: 40px
+}
+.left__score,
+.right__score {
+    margin-top: 14px;
+    font-size: 80px;
+    color: #EB4D4D;
+}
+.left__score--temporary,
+.right__score--temporary {
+    padding-top: 15px;
+    width: 120px;
+    height: 83px;
+    background-color: #EB4D4D;
+    margin: 134px auto 0 auto;
+    border-radius: 5px;
+}
+.score--temporary--pharagraph {
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.center {
+    padding-top: 65px;
+}
+.button {
+    border: none;
+    width: 160px;
+    height: 25px;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.fa {
+    color: #EB4D4D;
+    margin-right: 10px;
+}
+.dice0 {
+    width: 100px;
+    height: 100px;
+    margin: 70px auto 0 auto;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(95, 95, 95);
+}
+.dice1 {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto 38px auto;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(95, 95, 95);
+}
+.button__save {
+    margin: 39px 0 37px 0;
+}
+.point__level {
+    width: 160px;
+    height: 45px;
+    border: 1px solid #EB4D4D;
+    outline: none;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+::placeholder {
+    text-align: center;
+}
+
+.active {
+    color: #EB4D4D;
+}
+
+.score--temporary--score0,
+.score--temporary--score1 {
+    color: #fff;
+    font-size: 30px;
+}
