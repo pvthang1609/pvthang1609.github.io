@@ -64,6 +64,18 @@ app.post('/newPost', function(req, res) {
     res.redirect('/')
 })
 
+app.post('/updatePost', function(req, res) {
+    let objectId = require('mongodb').ObjectID;
+    db.collection("techmaster").findOneAndUpdate(
+        { _id: new objectId(req.body.id) },
+        {$set: { heading: req.body.heading, img: req.body.img, desc: req.body.desc, day: req.body.day}}
+    ).catch(error => {
+        console.log(error)
+    })
+    res.redirect(`/${req.body.id}`)
+    
+})
+
 app.listen(port, function() {
     console.log(`on port ${port}`)
 })

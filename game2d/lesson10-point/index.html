@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="left">
-            <p class="left__name active">player 1</p>
+            <p class="left__name active">player 0</p>
             <p class="left__score">0</p>
             <div class="left__score--temporary">
                 <h2 class="score--temporary--pharagraph">Điểm</h2>
@@ -28,16 +28,24 @@
             </div>
             <button onclick="randomDices()" class="button"><i class="fa fa-refresh" aria-hidden="true"></i>Lắc xúc sắc</button>
             <button onclick="saveScore()" class="button button__save"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>Lưu điểm</button>
-            <input type="number" class="point__level" placeholder="Mức điểm">
+            <input type="number" class="point__level" placeholder="Mức điểm" value=100>
         </div>
         <div class="right">
-            <p class="right__name">player 2</p>
+            <p class="right__name">player 1</p>
             <p class="right__score">0</p>
             <div class="right__score--temporary">
                 <h2 class="score--temporary--pharagraph">Điểm</h2>
                 <p class="score--temporary--score1">0</p>
             </div>
         </div>
+    </div>
+    <div class="showPlayer0Win">
+        <p class="text__congratulations">Player 0 Win !!!</p>
+        <button class="button__reload">Chơi lại</button>
+    </div>
+    <div class="showPlayer1Win">
+        <p class="text__congratulations">Player 1 Win !!!</p>
+        <button class="button__reload">Chơi lại</button>
     </div>
     <script src="main.js"></script>
 </body>

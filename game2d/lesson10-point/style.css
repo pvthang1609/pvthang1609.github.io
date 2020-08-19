@@ -21,6 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    
 }
 .left,
 .right,
@@ -110,11 +111,47 @@ body {
 }
 
 .active {
-    color: #EB4D4D;
+    color: #FFF;
+    background-color: #EB4D4D;
 }
 
 .score--temporary--score0,
 .score--temporary--score1 {
     color: #fff;
     font-size: 30px;
+}
+.showPlayer0Win,
+.showPlayer1Win {
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff85;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    display: none;
+}
+.text__congratulations {
+    line-height: 600px;
+    text-align: center;
+    font-size: 100px;
+    color: #EB4D4D;
+}
+.button__reload {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    border: 1px solid #EB4D4D;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
 }

@@ -22,7 +22,14 @@
         <div class="pharagraph">
             <p><%= result.desc %></p>
         </div>
-        
+        <form action="/updatePost" class="form__form" method="POST">
+            <input type="hidden" name="id" class="form__input" value="<%= result._id %>">
+            <input type="text" name="heading" placeholder="Nhập tiêu đề bài viết mới." class="form__input">
+            <input type="text" name="img" placeholder="Nhập url của ảnh tiêu đề mới." class="form__input">
+            <input type="text" name="desc" placeholder="Nhập phần mô tả ngắn về bài viết mới." class="form__input">
+            <input type="text" name="day" placeholder="Nhập ngày tháng xuất bản mới." class="form__input">
+            <button type="submit">Sửa bài</button>
+        </form>
     </div>
 
 </body>

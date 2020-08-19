@@ -5,6 +5,16 @@ let selectTemporaryScore0 = document.querySelector('.score--temporary--score0')
 let selectTemporaryScore1 = document.querySelector('.score--temporary--score1')
 let selectTotalScore0 = document.querySelector('.left__score')
 let selectTotalScore1 = document.querySelector('.right__score')
+let selectLeftName = document.querySelector('.left__name')
+let selectRightName = document.querySelector('.right__name')
+let selectPointLevel = document.querySelector('.point__level')
+let selectshowPlayer0Win = document.querySelector('.showPlayer0Win')
+let selectshowPlayer1Win = document.querySelector('.showPlayer1Win')
+let selectContainer = document.querySelector('.container')
+
+
+
+
 
 let player = 0;
 
@@ -81,19 +91,21 @@ function sumTemporaryScore() {
 
 // func lưu điểm tạm thời vào điểm tổng
 function saveScore() {
-    console.log('isRun')
     if(player == 0) {
         score0.total += score0.temporary;
         score0.temporary = 0;
         showScore();
         switchPlayer();
+        showPlayer()
     }
     else {
-        score1.total = score1.temporary;
+        score1.total += score1.temporary;
         score1.temporary = 0;
         showScore();
         switchPlayer();
+        showPlayer()
     }
+    checkScore();
 }
 
 //func đổi người
@@ -107,7 +119,28 @@ function switchPlayer() {
 }
 //func hiển thị lượt người chơi
 
-// function 
+function showPlayer() {
+    if(player == 0) {
+        selectLeftName.classList.add('active')
+        selectRightName.classList.remove('active')
+    }
+    else {
+        selectRightName.classList.add('active')
+        selectLeftName.classList.remove('active')
+    }
+}
+// value mặc định của mốc điểm là 100
+// function check điểm
+function checkScore() {
+    if(score0.total >= selectPointLevel.value) {
+        selectshowPlayer0Win.style.display = 'block';
+        selectContainer.style.filter = 'blur(30px)'
+    }
+    else if(score1.total >= selectPointLevel.value){
+        selectshowPlayer1Win.style.display = 'block';
+        selectContainer.style.filter = 'blur(30px)'
+    }
+}
 
 // fuction tạo xí ngầu ngẫu nhiên
 function randomDices() {
@@ -130,6 +163,8 @@ function randomDices() {
         sumTemporaryScore();
     }
     showScore();
+    showPlayer();
+
     arrDices.forEach(dice => {
         if (dice.name == dices["dice0"]) {
             selectDiceIMG0.src = dice.src 
