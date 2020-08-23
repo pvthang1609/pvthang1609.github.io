@@ -1,12 +1,10 @@
 //canvas h: 710; w: 530
 const DEGREE = Math.PI / 180
 const POINT = new Audio('./sound/sfx_point.wav')
-const game = {
-    curent: 0,
-    start: 0,
-    play: 1,
-    end: 2
-}
+const HIT = new Audio('./sound/sfx_hit.wav')
+let executed = false;
+
+let game = 'start'
 
 let canvas = document.querySelector('.canvas');
 let ctx = canvas.getContext('2d')
@@ -57,7 +55,7 @@ let arrGround = [];
 
 for (let i = 0; i < 4; i ++) {
     let ground = new Ground(0 + 215*i, 625);
-    arrGround.push(ground)
+    arrGround.push(ground)  
 }
 
 function drawArrGround(){
@@ -94,13 +92,13 @@ class Bird {
         this.cW = 51;
         this.cH = 36;
         this.i = 0
-        this.a = 0.5;                 //a là gia tốc
+        this.a = 0.5;                 
         this.v = 0;                   //v là vận tốc
         this.rotate = 0;               //góc quay 
     }
     draw() {
         ctx.beginPath();
-        if(game.curent == 0) {
+        if(game == 'start') {
             if(frame % 35 == 0) {
                 this.i++;
                 if(this.i > 2) {
@@ -108,7 +106,7 @@ class Bird {
                 }
             }
         }
-        if(game.curent == 1) {
+        if(game == 'play') {
             if(frame % 16 == 0) {
                 this.i++;
                 if(this.i > 2) {
@@ -125,7 +123,7 @@ class Bird {
         ctx.restore()
     }
     update() {
-        if (game.curent == 1 || game.curent == 2) {
+        if (game == 'play' || game == 'end') {
             if (this.v < 0 ){
                 this.rotate += this.v * 5
             }
@@ -143,7 +141,11 @@ class Bird {
             if (bird.cX + 51 > arrPipes[0].cX + 20
                 && bird.cX < arrPipes[0].cX + 82
                 &&(bird.cY < arrPipes[0].cY + 720 || bird.cY + 36 > arrPipes[0].cY + 720 + arrPipes[0].space)) {
-                    endgame();
+                    if (!executed) {
+                        HIT.play();
+                        executed = true;
+                    }
+                    game = 'end';
             }
             if(bird.cX == arrPipes[0].cX + 82 || bird.cX == arrPipes[0].cX + 81 ) {
                 addScore();
@@ -152,7 +154,7 @@ class Bird {
         if (this.cY + this.v >= 590) {
             this.cY = 625;
             this.v = 0;
-            game.curent = 2;
+            game = 'end';
         }
         
     }
@@ -267,6 +269,10 @@ class Medal {
         ctx.drawImage(sprites, this.sX, this.sY[this.i], this.sW, this.sH, this.cX, this.cY, this.cW, this.cH)
     }
     update() {
+        if (score.value == 0) {
+            medal.i = 2;
+            return;
+        }
         if (score.value == maxScore.value){
             medal.i = 1;
         }
@@ -335,25 +341,17 @@ function updateArrPipes() {
     }
 }
 
-
-
-//function endgame & new game
-function endgame() {
-    game.curent =2
-    return;
-}
-
 //Control
 
 addEventListener('click', function click() {
-    switch (game.curent) {
-        case 0:
-            game.curent = 1;
+    switch (game) {
+        case 'start':
+            game = 'play';
             break;
-        case 1:
+        case 'play':
             bird.v = -8;
             break;
-        case 2:
+        case 'end':
             if (event.offsetX > canvas.width/2 - 41.5
                 && event.offsetX < canvas.width/2 + 41.5
                 && event.offsetY > 500
@@ -364,7 +362,8 @@ addEventListener('click', function click() {
                     bird.cY = canvas.height / 2 - 12;
                     bird.rotate = 0;
                     bird.v = 0;
-                    game.curent = 0;
+                    game = 'start';
+                    executed = false;
                 }
     }
 })
@@ -376,7 +375,7 @@ addEventListener('click', function click() {
 
 //Update
 function update() {
-    if(game.curent == 1) {
+    if(game == 'play') {
         updateArrPipes();
         updateArrGround();
     }
@@ -387,16 +386,16 @@ function update() {
 //Draw
 function draw() {
     bg.draw();
-    if(game.curent == 0) {
+    if(game == 'start') {
         start.draw()
     }
     drawArrPipes();
-    if(game.curent == 1) {
+    if(game == 'play') {
         score.draw(); 
     }
     drawArrGround();
     bird.draw();
-    if(game.curent == 2) {
+    if(game == 'end') {
         end.draw();
         score.drawSmall();
         maxScore.drawSmall();
