@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+image {
+    display: block;
+    width: 100%;
+}
+a {
+    text-decoration: none;
+}
+body {
+    background: #ffffff;
+}
+.container {
+    width: 350px;
+    height: 600px;
+    background: linear-gradient(180deg, rgba(207,127,242,1) 0%, rgba(143,111,220,1) 100%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 25px 20px;
+}
+.info__date {
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #ffffff;
+}
+.info__date--date {
+    font-size: 45px;
+    margin-right: 5px;
+}
+.info__date--dayMonthYear {
+    margin-right: 140px;
+}
+.info__date--icon {
+    cursor: pointer;
+    font-size: 30px;
+}
+.sevenDay {
+    margin-top: 10px;
+    color: #ffffff;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sevenDay__day--date {
+    text-transform: uppercase;
+}
+.sevenDay__day--day {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.active {
+    background-color: #fff;
+    color: rgba(207,127,242,1);
+}
