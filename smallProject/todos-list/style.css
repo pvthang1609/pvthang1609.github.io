@@ -52,10 +52,11 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.sevenDay__day--date {
-    text-transform: uppercase;
-}
 .sevenDay__day--day {
+    text-transform: uppercase;
+    text-align: center;
+}
+.sevenDay__day--date {
     width: 30px;
     height: 30px;
     text-align: center;
