@@ -24,14 +24,7 @@ let dateFive = new Date(thisTime + 1*86400000)
 let dateSix = new Date(thisTime + 2*86400000)
 let dateSeven = new Date(thisTime + 3*86400000)
 
-
-
-
 let choiceDay =document.querySelectorAll('.sevenDay__day--date')
-
-console.log(date.getTime())
-console.log(dateOne)
-
 
 // push ngày tháng vào html
 
@@ -76,3 +69,11 @@ document.querySelector('.day__six--date').innerHTML = `${dateSix.getDate()}`;
 
 document.querySelector('.day__seven--day').innerHTML = `${dayNamesAbb[dateSeven.getDay()]}`;
 document.querySelector('.day__seven--date').innerHTML = `${dateSeven.getDate()}`;
+
+//add todo
+let btAdd = document.querySelector('.btAdd')
+
+btAdd.addEventListener('click', function() {
+  document.querySelector('.info__date').style.transform = 'translateX(-500px)'
+  // document.querySelector('.info__date').style.opacity = '0'
+})
