@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class="container">
@@ -52,9 +51,113 @@
             </div>
         </div>
         <div class="todosList">
+            <div class="innerTodoList">
+                <!-- <div class="todo" draggable="true" ondragstart="drag(event)" ondragend='cancel(event)' id="div1">
+                    <div class="todo__time">08:30</div>
+                    <div class="todo__content">
+                        <div class="todo__content--text heading">Lorem ipsum dolor sit amet consectetur</div>
+                        <div class="todo__content--text content">fdafdasfdsa</div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="delete" ondrop="drop(event)" ondragover="allowDrop(event)"><i class="fa fa-trash" aria-hidden="true"></i></div>
             <button class="btAdd"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
+        <div class="creatNew">
+            <h1>Creat Todo</h1>
+            <div class="choiceDate">
+                <form>
+                    <label for="date">Date</label>
+                    <select name="date" id="date" >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                    </select>
+                    <select name="month" id="month">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </form>
+                <form>
+                    <label for="date">Time</label>
+                    <select name="hour" id="hour">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                    <select name="minute" id="minute">
+                    </select>
+                </form>
+            </div>
+            <div class="block__content">
+                <form>
+                    <h2>Heading</h2>
+                    <input type="text" id="heading" placeholder="What do you want to do??">
+                    <h2>Content</h2>
+                    <input type="text" id="content" placeholder="Please write content here">
+                </form>
+            </div>
+            <button class="btCreat"><i class="fa fa-check" aria-hidden="true"></i></button>
+        </div>
     </div>
-    <script src="main.js"></script>
+    <script src="main.js"></script> 
+    
 </body>
-</html>
+</html> 
